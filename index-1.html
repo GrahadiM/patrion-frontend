@@ -1,0 +1,1195 @@
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PATRION - Awakening the Hero Within</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4c025",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#7f1d1d",
+                        "secondary-red-dark": "#450a0a",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1a1614", // Warmer dark background
+                        "surface-dark": "#2a2420",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(26, 22, 20, 0.3), rgba(26, 22, 20, 1))',
+                        'card-gradient': 'linear-gradient(135deg, rgba(42, 36, 32, 0.9) 0%, rgba(26, 22, 20, 0.95) 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(127, 29, 29, 0.4) 0%, rgba(26, 22, 20, 0) 70%)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1614;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f4c025;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c69a1b;
+        }
+
+        .glass-panel {
+            background: rgba(42, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 192, 37, 0.1);
+        }
+
+        .hero-glow {
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.3);
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(to bottom, rgba(244, 192, 37, 0) 0%, rgba(244, 192, 37, 0.5) 50%, rgba(244, 192, 37, 0) 100%) 1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .card-slant {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded-lg shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                        <span class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Beranda</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#karakter">Karakter</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#semesta">Semesta</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#game">Game</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group bg-primary hover:bg-white text-background-dark font-display font-bold py-2 px-6 rounded transition-all duration-300 overflow-hidden shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.6)]">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">login</span>
+                            Login
+                        </span>
+                        <div
+                            class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary/20">
+                        </div>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-hero-gradient z-10"></div>
+            <div class="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105"
+                data-alt="Epic fantasy landscape with floating islands and golden light rays piercing through clouds"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k');">
+            </div>
+        </div>
+        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center gap-8 mt-16">
+            <div class="flex items-center gap-4 text-primary/80 mb-2 animate-pulse">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
+                <span class="material-symbols-outlined text-sm">stars</span>
+                <span class="font-display text-sm tracking-[0.3em] uppercase">Forging the Legend</span>
+                <span class="material-symbols-outlined text-sm">stars</span>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
+            </div>
+            <h1
+                class="font-display font-black text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none hero-glow">
+                AWAKEN THE <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-[#b8860b]">HERO
+                    WITHIN</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed font-light">
+                Embark on a journey through the Nusantara. Discover the lore, the legend, and the future where ancient
+                spirits meet modern courage.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 mt-8">
+                <button
+                    class="flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-[#d4a017] text-background-dark font-bold py-4 px-10 rounded-lg hover:translate-y-[-2px] hover:shadow-[0_10px_40px_-10px_rgba(244,192,37,0.5)] transition-all duration-300">
+                    <span class="font-display tracking-wider text-lg">START JOURNEY</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+                <button
+                    class="flex items-center justify-center gap-3 bg-surface-dark/50 backdrop-blur-md border border-white/10 text-white font-bold py-4 px-10 rounded-lg hover:bg-surface-dark/80 hover:border-primary/50 transition-all duration-300 group">
+                    <span
+                        class="material-symbols-outlined group-hover:text-primary transition-colors">play_circle</span>
+                    <span class="font-display tracking-wider text-lg">WATCH TRAILER</span>
+                </button>
+            </div>
+            <div
+                class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50 flex flex-col items-center gap-2">
+                <span class="text-xs font-display tracking-widest uppercase">Scroll</span>
+                <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+            </div>
+        </div>
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full blur-[2px] opacity-60 animate-pulse">
+        </div>
+        <div class="absolute bottom-1/3 right-1/4 w-3 h-3 bg-secondary-red rounded-full blur-[4px] opacity-40"></div>
+    </div>
+    <section class="relative py-24 bg-background-dark overflow-hidden" id="nusantara">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-red/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-20 text-center">
+                <div class="w-16 h-1 bg-primary mb-6"></div>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Nusantara dalam Patrion</h2>
+                <p class="text-gray-400 max-w-2xl text-lg">Explore the regions and stories that define our universe,
+                    woven from threads of history and fantasy.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Mystical ancient temple ruins in a dense jungle with golden light"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform transition-transform duration-500 group-hover:translate-y-[-10px]">
+                        <div
+                            class="flex items-center gap-2 mb-2 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span class="material-symbols-outlined text-primary">history_edu</span>
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Region: West</span>
+                        </div>
+                        <h3
+                            class="text-3xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Ancient Roots</h3>
+                        <p
+                            class="text-gray-300 line-clamp-3 group-hover:line-clamp-none transition-all duration-300 text-sm leading-relaxed">
+                            Drawing power from the deep history of the archipelago. Where the old stones whisper secrets
+                            of the first heroes who walked these lands.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute inset-0 border-2 border-white/10 rounded-2xl transition-colors duration-300 group-hover:border-primary/50 pointer-events-none">
+                    </div>
+                </div>
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden cursor-pointer md:mt-12">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Futuristic cyberpunk city with neon lights mixed with traditional architectural elements"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg');">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform transition-transform duration-500 group-hover:translate-y-[-10px]">
+                        <div
+                            class="flex items-center gap-2 mb-2 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span class="material-symbols-outlined text-primary">bolt</span>
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Region: Central</span>
+                        </div>
+                        <h3
+                            class="text-3xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Modern Spirit</h3>
+                        <p
+                            class="text-gray-300 line-clamp-3 group-hover:line-clamp-none transition-all duration-300 text-sm leading-relaxed">
+                            Forging a new path with courage and innovation. The bustling heart where technology meets
+                            tradition in a dazzling display of progress.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute inset-0 border-2 border-white/10 rounded-2xl transition-colors duration-300 group-hover:border-primary/50 pointer-events-none">
+                    </div>
+                </div>
+                <div class="group relative h-[450px] rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        data-alt="Abstract ethereal landscape with floating geometric shapes and bright horizon"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 p-8 w-full transform transition-transform duration-500 group-hover:translate-y-[-10px]">
+                        <div
+                            class="flex items-center gap-2 mb-2 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                            <span class="material-symbols-outlined text-primary">visibility</span>
+                            <span class="text-primary font-bold text-sm uppercase tracking-wider">Region: East</span>
+                        </div>
+                        <h3
+                            class="text-3xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Future Vision</h3>
+                        <p
+                            class="text-gray-300 line-clamp-3 group-hover:line-clamp-none transition-all duration-300 text-sm leading-relaxed">
+                            Looking ahead to a horizon of endless possibilities. Where the sun rises first, bringing
+                            with it the promise of tomorrow's legends.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute inset-0 border-2 border-white/10 rounded-2xl transition-colors duration-300 group-hover:border-primary/50 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 bg-[#14110f]" id="vision">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative min-h-[500px] flex items-center justify-center">
+                    <div
+                        class="absolute w-[400px] h-[400px] rounded-full border border-primary/20 animate-[spin_20s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute w-[300px] h-[300px] rounded-full border border-dashed border-primary/30 animate-[spin_15s_linear_infinite_reverse]">
+                    </div>
+                    <div
+                        class="relative z-10 w-full max-w-md aspect-[3/4] bg-gradient-to-br from-surface-dark to-black rounded-t-full rounded-b-lg border-2 border-primary/20 p-2 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                        <div class="w-full h-full rounded-t-full rounded-b-sm bg-cover bg-center opacity-80"
+                            data-alt="Illustration of a heroic warrior silhouette with glowing golden armor"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc'); filter: contrast(1.2) sepia(0.2);">
+                        </div>
+                        <div class="absolute bottom-8 left-0 right-0 text-center">
+                            <span
+                                class="inline-block bg-primary/20 backdrop-blur-md border border-primary/50 text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                                The Guardian
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-12">
+                    <div
+                        class="relative group p-8 bg-surface-dark/40 border border-white/5 rounded-xl hover:bg-surface-dark/60 transition-all duration-300 hover:border-primary/30">
+                        <div
+                            class="absolute -left-3 top-8 w-1 h-12 bg-primary group-hover:h-20 transition-all duration-300">
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-primary/10 rounded-lg text-primary">
+                                <span class="material-symbols-outlined text-3xl">light_mode</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Visi Kami</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    To become the beacon of Nusantara's creative spirit, illuminating the path for
+                                    future generations through storytelling and immersive experiences that rival the
+                                    world's best.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="relative group p-8 bg-surface-dark/40 border border-white/5 rounded-xl hover:bg-surface-dark/60 transition-all duration-300 hover:border-secondary-red/50">
+                        <div
+                            class="absolute -left-3 top-8 w-1 h-12 bg-secondary-red group-hover:h-20 transition-all duration-300">
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-secondary-red/10 rounded-lg text-secondary-red">
+                                <span class="material-symbols-outlined text-3xl">flag</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white mb-2">Misi Kami</h3>
+                                <ul class="space-y-3 text-gray-400">
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-1.5 h-1.5 bg-secondary-red rounded-full"></span>
+                                        <span>Preserve cultural heritage through digital innovation.</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-1.5 h-1.5 bg-secondary-red rounded-full"></span>
+                                        <span>Empower local creators to showcase their talents globally.</span>
+                                    </li>
+                                    <li class="flex items-center gap-3">
+                                        <span class="w-1.5 h-1.5 bg-secondary-red rounded-full"></span>
+                                        <span>Build a community rooted in honor, courage, and creativity.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 bg-background-dark" id="goals">
+        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm mb-2 block">Quest Log</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white">Strategic Goals</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div
+                    class="group relative bg-surface-dark border border-white/5 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined">globe_asia</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Global
+                        Reach</h4>
+                    <p class="text-gray-500 text-sm group-hover:text-gray-300 transition-colors">Expanding the influence
+                        of Nusantara to every corner of the digital world.</p>
+                </div>
+                <div
+                    class="group relative bg-surface-dark border border-white/5 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined">groups</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Community
+                        First</h4>
+                    <p class="text-gray-500 text-sm group-hover:text-gray-300 transition-colors">Building a sanctuary
+                        for creators, gamers, and dreamers.</p>
+                </div>
+                <div
+                    class="group relative bg-surface-dark border border-white/5 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Education
+                    </h4>
+                    <p class="text-gray-500 text-sm group-hover:text-gray-300 transition-colors">Teaching the next
+                        generation the values of heroism and integrity.</p>
+                </div>
+                <div
+                    class="group relative bg-surface-dark border border-white/5 rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
+                    <div
+                        class="w-12 h-12 mb-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-symbols-outlined">diamond</span>
+                    </div>
+                    <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Quality
+                    </h4>
+                    <p class="text-gray-500 text-sm group-hover:text-gray-300 transition-colors">Setting the gold
+                        standard for production and storytelling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 bg-[#0f0c0a] overflow-hidden" id="karakter">
+        <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay pointer-events-none"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k'); background-size: cover; filter: grayscale(100%);">
+        </div>
+        <div
+            class="absolute top-20 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary-red/5 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div class="container mx-auto relative z-10">
+            <div class="flex flex-col items-center mb-16 text-center px-4">
+                <div class="flex items-center gap-2 text-primary/80 mb-3 animate-pulse">
+                    <span class="h-px w-8 bg-primary"></span>
+                    <span class="text-xs font-bold tracking-[0.3em] uppercase">Roster</span>
+                    <span class="h-px w-8 bg-primary"></span>
+                </div>
+                <h2
+                    class="text-4xl md:text-6xl font-display font-black text-white mb-6 uppercase tracking-tight relative inline-block">
+                    Pahlawan Patrion
+                    <span
+                        class="absolute -top-8 -right-8 text-6xl text-white/5 font-display font-black select-none pointer-events-none">HEROES</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl text-lg">Choose your champion. Master the elements. Defend the
+                    Nusantara.</p>
+            </div>
+            <div class="relative w-full">
+                <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-16 pt-4 px-4 md:px-0 md:justify-start lg:pl-10 hide-scrollbar"
+                    style="scroll-padding-left: 2rem; scroll-padding-right: 2rem;">
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-primary/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-primary text-xl">bolt</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-primary transition-colors duration-300">
+                                    SATRIA</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Thunder
+                                    Guardian</p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Guardian of the eternal lightning, striking fear into the hearts of shadows.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-primary/10 group-hover:border-primary/30 transition-colors">
+                                        <span class="material-symbols-outlined text-primary text-base">shield</span>
+                                        <span class="text-xs font-bold text-white uppercase">Tank</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-primary/10 group-hover:border-primary/30 transition-colors">
+                                        <span class="material-symbols-outlined text-purple-400 text-base">bolt</span>
+                                        <span class="text-xs font-bold text-white uppercase">Electro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-secondary-red/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(90deg) contrast(1.2);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-secondary-red/20 group-hover:border-secondary-red transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-secondary-red text-xl">local_fire_department</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-secondary-red opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-secondary-red transition-colors duration-300">
+                                    AGNI</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Sacred Flame
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Wielder of the sacred flame, burning bright against the encroaching darkness.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-secondary-red/10 group-hover:border-secondary-red/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-secondary-red text-base">swords</span>
+                                        <span class="text-xs font-bold text-white uppercase">DPS</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-secondary-red/10 group-hover:border-secondary-red/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-orange-500 text-base">local_fire_department</span>
+                                        <span class="text-xs font-bold text-white uppercase">Pyro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-secondary-red group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-cyan-400/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: hue-rotate(180deg);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-cyan-400/20 group-hover:border-cyan-400 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-cyan-400 text-xl">air</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-cyan-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-cyan-400 transition-colors duration-300">
+                                    BAYU</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Wind Walker
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Master of the winds, swift as thought and sharp as a gale.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-cyan-400/10 group-hover:border-cyan-400/30 transition-colors">
+                                        <span class="material-symbols-outlined text-cyan-400 text-base">support</span>
+                                        <span class="text-xs font-bold text-white uppercase">Support</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-cyan-400/10 group-hover:border-cyan-400/30 transition-colors">
+                                        <span class="material-symbols-outlined text-sky-300 text-base">air</span>
+                                        <span class="text-xs font-bold text-white uppercase">Anemo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-cyan-400 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-emerald-500/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-right transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:border-emerald-500 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-emerald-500 text-xl">landscape</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-emerald-500 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-emerald-500 transition-colors duration-300">
+                                    BUMI</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Earth Anchor
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Strong as the mountain roots, protecting allies with the earth itself.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-colors">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">shield</span>
+                                        <span class="text-xs font-bold text-white uppercase">Tank</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-colors">
+                                        <span class="material-symbols-outlined text-green-400 text-base">spa</span>
+                                        <span class="text-xs font-bold text-white uppercase">Dendro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-emerald-500 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-purple-500/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(240deg);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-purple-500/20 group-hover:border-purple-500 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-purple-500 text-xl">auto_awesome</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-purple-500 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-purple-500 transition-colors duration-300">
+                                    CITRA</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Illusionist
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Weaver of illusions and starlight, confusing foes on the battlefield.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-purple-500 text-base">auto_fix</span>
+                                        <span class="text-xs font-bold text-white uppercase">Mage</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-colors">
+                                        <span class="material-symbols-outlined text-fuchsia-400 text-base">bolt</span>
+                                        <span class="text-xs font-bold text-white uppercase">Electro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-purple-500 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-blue-400/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: brightness(0.8) hue-rotate(10deg);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-blue-400/20 group-hover:border-blue-400 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-blue-400 text-xl">water_drop</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-blue-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-blue-400 transition-colors duration-300">
+                                    TIRTA</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Tidal Healer
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Healer of wounds and spirit, flowing like the endless river.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-blue-400/10 group-hover:border-blue-400/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-blue-400 text-base">medical_services</span>
+                                        <span class="text-xs font-bold text-white uppercase">Healer</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-blue-400/10 group-hover:border-blue-400/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-cyan-300 text-base">water_drop</span>
+                                        <span class="text-xs font-bold text-white uppercase">Hydro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-blue-400 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-yellow-200/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc'); filter: sepia(0.8);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-yellow-200/20 group-hover:border-yellow-200 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-yellow-200 text-xl">sunny</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-yellow-200 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-yellow-200 transition-colors duration-300">
+                                    SURYA</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Dawn Bringer
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    Knight of the dawn, bringing justice with blinding light.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-yellow-200/10 group-hover:border-yellow-200/30 transition-colors">
+                                        <span class="material-symbols-outlined text-yellow-200 text-base">swords</span>
+                                        <span class="text-xs font-bold text-white uppercase">DPS</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-yellow-200/10 group-hover:border-yellow-200/30 transition-colors">
+                                        <span
+                                            class="material-symbols-outlined text-yellow-100 text-base">light_mode</span>
+                                        <span class="text-xs font-bold text-white uppercase">Light</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-yellow-200 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative w-[300px] md:w-[340px] h-[540px] flex-shrink-0 snap-center cursor-pointer transition-all duration-500 hover:-translate-y-2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-[2rem] border border-white/10 group-hover:border-gray-400/50 transition-colors duration-300 shadow-2xl backdrop-blur-sm overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k'); filter: grayscale(0.8) contrast(1.4);">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#1a1614] via-[#1a1614]/40 to-transparent opacity-90">
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-gray-400/20 group-hover:border-gray-400 transition-all duration-300">
+                                <span
+                                    class="material-symbols-outlined text-white group-hover:text-gray-400 text-xl">shield</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end h-full">
+                                <div
+                                    class="flex gap-0.5 mb-2 text-gray-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-100">
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                    <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                </div>
+                                <h3
+                                    class="text-4xl font-display font-black text-white italic tracking-tighter mb-1 leading-none group-hover:text-gray-400 transition-colors duration-300">
+                                    BAJA</h3>
+                                <p class="text-white/60 text-xs font-bold tracking-widest uppercase mb-4">Iron Bastion
+                                </p>
+                                <p
+                                    class="text-gray-300 text-sm mb-6 line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    The iron wall that never breaks, forged in the hottest fires.</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-gray-400/10 group-hover:border-gray-400/30 transition-colors">
+                                        <span class="material-symbols-outlined text-gray-400 text-base">shield</span>
+                                        <span class="text-xs font-bold text-white uppercase">Tank</span>
+                                    </div>
+                                    <div
+                                        class="bg-white/5 border border-white/10 rounded px-3 py-2 flex items-center gap-2 group-hover:bg-gray-400/10 group-hover:border-gray-400/30 transition-colors">
+                                        <span class="material-symbols-outlined text-slate-300 text-base">hexagon</span>
+                                        <span class="text-xs font-bold text-white uppercase">Steel</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 h-1 w-0 bg-gray-400 group-hover:w-full transition-all duration-500 ease-out">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="absolute top-0 left-0 w-8 md:w-32 h-full bg-gradient-to-r from-[#0f0c0a] to-transparent pointer-events-none z-20">
+                </div>
+                <div
+                    class="absolute top-0 right-0 w-8 md:w-32 h-full bg-gradient-to-l from-[#0f0c0a] to-transparent pointer-events-none z-20">
+                </div>
+            </div>
+            <div class="flex justify-center items-center gap-4 mt-2">
+                <span class="text-white/20 text-xs uppercase tracking-widest">Drag to Explore</span>
+                <div class="flex gap-2">
+                    <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                    <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                    <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                    <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                    <div class="w-2 h-2 rounded-full bg-white/20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 bg-background-dark border-t border-white/5" id="semesta">
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px]"></div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-16 text-center">
+                <span
+                    class="text-primary font-bold tracking-widest uppercase text-sm mb-2 block flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">movie</span> Entertainment
+                </span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Patrion Universe Programs</h2>
+                <p class="text-gray-400 max-w-2xl text-lg">Immersive stories across all dimensions. From the big screen
+                    to your handheld device.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            CINEMA</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            The First Guardian</h4>
+                        <p class="text-gray-500 text-sm mb-4">The origin story of Satria and the founding of the order.
+                        </p>
+                        <span class="text-primary text-xs uppercase tracking-wider font-bold">Coming Soon</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg');">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            TV SERIES</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Neon Nights</h4>
+                        <p class="text-gray-500 text-sm mb-4">Investigating the supernatural under the city lights.</p>
+                        <span class="text-green-500 text-xs uppercase tracking-wider font-bold">Now Streaming</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            OTT</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Dimensions</h4>
+                        <p class="text-gray-500 text-sm mb-4">An anthology series exploring the multiverse.</p>
+                        <span class="text-green-500 text-xs uppercase tracking-wider font-bold">New Episode</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc');">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            DIGITAL</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Hero Shorts</h4>
+                        <p class="text-gray-500 text-sm mb-4">Quick bites of action and comedy featuring your favorites.
+                        </p>
+                        <span class="text-green-500 text-xs uppercase tracking-wider font-bold">Daily Updates</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k');">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            TV SERIES</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Legends of Borneo</h4>
+                        <p class="text-gray-500 text-sm mb-4">Discovering ancient creatures in the deep rainforest.</p>
+                        <span class="text-primary text-xs uppercase tracking-wider font-bold">In Production</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0'); filter: hue-rotate(-30deg);">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            CINEMA</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            The Golden Crisis</h4>
+                        <p class="text-gray-500 text-sm mb-4">The heroes must unite to stop an economic collapse
+                            orchestrated by evil.</p>
+                        <span class="text-gray-400 text-xs uppercase tracking-wider font-bold">Released 2023</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: grayscale(100%);">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            OTT</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Shadow Files</h4>
+                        <p class="text-gray-500 text-sm mb-4">Documentary style investigation into the lore.</p>
+                        <span class="text-green-500 text-xs uppercase tracking-wider font-bold">Season 2</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc'); filter: hue-rotate(45deg);">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            DIGITAL</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Comic Motion</h4>
+                        <p class="text-gray-500 text-sm mb-4">Animated comic books with voice acting.</p>
+                        <span class="text-green-500 text-xs uppercase tracking-wider font-bold">Weekly</span>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark border border-white/5 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(180deg);">
+                        </div>
+                        <div
+                            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded border border-white/10">
+                            TV SERIES</div>
+                    </div>
+                    <div class="p-6">
+                        <h4
+                            class="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Academy of Valor</h4>
+                        <p class="text-gray-500 text-sm mb-4">Teen heroes learning to control their powers.</p>
+                        <span class="text-primary text-xs uppercase tracking-wider font-bold">Casting Now</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative py-24 bg-[#0f0c0a] overflow-hidden border-t border-white/5" id="game">
+        <div
+            class="absolute top-0 left-1/4 w-[300px] h-[300px] bg-secondary-red/10 rounded-full blur-[100px] animate-pulse">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-16 text-center">
+                <span
+                    class="text-primary font-bold tracking-widest uppercase text-sm mb-2 block flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">sports_esports</span> Play Now
+                </span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Patrion Games</h2>
+                <div class="w-16 h-1 bg-secondary-red mb-6"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div
+                    class="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                    </div>
+                    <div class="absolute top-6 right-6">
+                        <div
+                            class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
+                            <span class="material-symbols-outlined text-white text-3xl">extension</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-10 w-full">
+                        <span
+                            class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-bold uppercase mb-4 inline-block">Puzzle
+                            RPG</span>
+                        <h3
+                            class="text-4xl font-display font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                            Rune Quest</h3>
+                        <p class="text-gray-300 mb-6 max-w-md">Solve ancient mysteries and unlock the power of the runes
+                            in this addictive puzzle adventure.</p>
+                        <button
+                            class="flex items-center gap-2 bg-primary hover:bg-white text-background-dark font-bold py-3 px-8 rounded-lg transition-all duration-300">
+                            <span class="material-symbols-outlined">download</span> Download
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="group relative h-[450px] rounded-2xl overflow-hidden border border-white/10 hover:border-secondary-red/50 transition-all duration-500 shadow-2xl">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0'); filter: contrast(1.1);">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                    </div>
+                    <div class="absolute top-6 right-6">
+                        <div
+                            class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
+                            <span class="material-symbols-outlined text-white text-3xl">auto_stories</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-10 w-full">
+                        <span
+                            class="px-3 py-1 bg-secondary-red/20 text-secondary-red border border-secondary-red/30 rounded-full text-xs font-bold uppercase mb-4 inline-block">Visual
+                            Novel</span>
+                        <h3
+                            class="text-4xl font-display font-bold text-white mb-4 group-hover:text-secondary-red transition-colors">
+                            Echoes of Destiny</h3>
+                        <p class="text-gray-300 mb-6 max-w-md">Your choices matter. Forge relationships and decide the
+                            fate of the Patrion universe.</p>
+                        <button
+                            class="flex items-center gap-2 bg-secondary-red hover:bg-white hover:text-secondary-red text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 border border-transparent hover:border-secondary-red">
+                            <span class="material-symbols-outlined">play_arrow</span> Play Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-24 relative rounded-2xl overflow-hidden bg-gradient-to-r from-secondary-red-dark to-background-dark border border-secondary-red/30">
+                <div class="absolute top-0 right-0 p-32 bg-primary/10 rounded-full blur-[80px]"></div>
+                <div class="relative z-10 p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="text-left">
+                        <h3 class="text-3xl font-display font-bold text-white mb-2">Ready to Join the Ranks?</h3>
+                        <p class="text-gray-300 max-w-lg">The journey of a thousand miles begins with a single step.
+                            Claim your destiny with Patrion.</p>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-white text-background-dark font-display font-bold py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(244,192,37,0.3)] transition-all duration-300 hover:scale-105 whitespace-nowrap">
+                        BECOME A PATRION
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
