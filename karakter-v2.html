@@ -151,7 +151,7 @@
         </div>
     </nav>
     <main class="pt-20 min-h-screen relative bg-background-dark">
-        <div class="inset-0 w-full h-full pointer-events-none z-0">
+        <div class="fixed inset-0 w-full h-full pointer-events-none z-0">
             <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
             <div
                 class="absolute top-0 left-0 w-full h-[80vh] bg-gradient-to-b from-surface-dark/90 to-background-dark z-0">
@@ -184,8 +184,8 @@
                     <div
                         class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-primary/10 to-transparent skew-x-12 opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none">
                     </div>
-                    <div class="grid lg:grid-cols-12 gap-0 min-h-[500px]">
-                        <div class="lg:col-span-7 relative h-[400px] lg:h-auto overflow-hidden">
+                    <div class="grid lg:grid-cols-12 gap-0 min-h-[550px]">
+                        <div class="lg:col-span-7 relative h-[450px] lg:h-auto overflow-hidden">
                             <div class="absolute inset-0 bg-cover bg-top lg:bg-center transition-transform duration-1000 group-hover:scale-105"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc');">
                             </div>
@@ -201,7 +201,8 @@
                             class="lg:col-span-5 p-8 lg:p-12 flex flex-col justify-center relative bg-gradient-to-b from-transparent to-background-dark/50 lg:bg-none">
                             <div class="flex items-center gap-3 mb-2">
                                 <span
-                                    class="px-3 py-1 bg-primary/20 border border-primary/50 text-primary text-[10px] font-bold uppercase tracking-widest clip-corner-sm">Featured</span>
+                                    class="px-3 py-1 bg-primary/20 border border-primary/50 text-primary text-[10px] font-bold uppercase tracking-widest clip-corner-sm">Featured
+                                    Character</span>
                                 <div class="flex text-primary">
                                     <span class="material-symbols-outlined fill text-sm">star</span>
                                     <span class="material-symbols-outlined fill text-sm">star</span>
@@ -219,7 +220,8 @@
                                 <p class="text-gray-300 leading-relaxed text-sm lg:text-base">
                                     Born from the thunder of the ancient Mount Merapi, Satria wields the eternal
                                     lightning to protect the archipelago. His speed is unmatched, striking enemies
-                                    before the sound of thunder even reaches their ears.
+                                    before the sound of thunder even reaches their ears. As the First Guardian, he bears
+                                    the weight of the Garuda legacy.
                                 </p>
                             </div>
                             <div class="grid grid-cols-2 gap-y-6 gap-x-4 mb-8">
@@ -254,10 +256,31 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Affiliation
+                                    <div class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Role</div>
+                                    <div
+                                        class="text-white font-bold text-lg leading-tight pt-1 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm text-primary">verified</span>
+                                        DPS Carry
                                     </div>
-                                    <div class="text-white font-bold text-lg leading-tight pt-1">
-                                        Garuda Force
+                                </div>
+                            </div>
+                            <div class="mb-8 space-y-2">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-[10px] text-gray-500 uppercase w-8">ATK</span>
+                                    <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary w-[95%]"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-[10px] text-gray-500 uppercase w-8">DEF</span>
+                                    <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary/60 w-[60%]"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-[10px] text-gray-500 uppercase w-8">SPD</span>
+                                    <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary w-[90%]"></div>
                                     </div>
                                 </div>
                             </div>
@@ -327,339 +350,436 @@
                     </button>
                 </div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 gap-y-10 mb-24">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-10 mb-24">
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-red-500/50">
                     <div class="absolute inset-0 bg-cover bg-left transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(90deg) contrast(1.1);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-red-500/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(220,38,38,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-red-500/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-red-500 text-base">local_fire_department</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-red-500/30 flex items-center justify-center shadow-lg group-hover:bg-red-900/50 group-hover:border-red-500 transition-colors">
+                            <span class="material-symbols-outlined text-red-500 text-xl">local_fire_department</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    AGNI</h3>
-                                <div class="flex text-red-500 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        AGNI</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-red-400 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Pyro Claymore</div>
+                                </div>
+                                <div class="flex text-red-500 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-red-500 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Channeling the fury of volcanoes, his flames purify evil.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Claymore</span>
-                                <span class="material-symbols-outlined text-red-500 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-red-500 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Channeling the fury of ancient volcanoes, Agni's massive claymore strikes with the
+                                    weight of molten rock. His flames don't just burn; they purify the corruption
+                                    seeping into the archipelago.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>ATK: <b class="text-white">S</b></span>
+                                        <span>DEF: <b class="text-white">B</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-red-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-cyan-400/50">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: hue-rotate(180deg);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-cyan-400/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(34,211,238,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-cyan-400/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-cyan-400 text-base">air</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-cyan-400/30 flex items-center justify-center shadow-lg group-hover:bg-cyan-900/50 group-hover:border-cyan-400 transition-colors">
+                            <span class="material-symbols-outlined text-cyan-400 text-xl">air</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    BAYU</h3>
-                                <div class="flex text-cyan-400 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        BAYU</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Anemo Archer</div>
+                                </div>
+                                <div class="flex text-cyan-400 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-cyan-400 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Swift as a whisper, sharp as a gale. Unparalleled mobility.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Bow</span>
-                                <span class="material-symbols-outlined text-cyan-400 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-cyan-400 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Swift as a mountain whisper and sharp as a gale, Bayu traverses the battlefield with
+                                    unparalleled mobility. His arrows find their mark before the bowstring even stops
+                                    vibrating.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>SPD: <b class="text-white">S</b></span>
+                                        <span>RNG: <b class="text-white">A</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-cyan-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-emerald-500/50">
                     <div class="absolute inset-0 bg-cover bg-right transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-emerald-500/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(16,185,129,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-emerald-500/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-emerald-500 text-base">landscape</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-emerald-500/30 flex items-center justify-center shadow-lg group-hover:bg-emerald-900/50 group-hover:border-emerald-500 transition-colors">
+                            <span class="material-symbols-outlined text-emerald-500 text-xl">landscape</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    BUMI</h3>
-                                <div class="flex text-emerald-500 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        BUMI</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Dendro Polearm</div>
+                                </div>
+                                <div class="flex text-emerald-500 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-emerald-500 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Unshakeable as the mountains. Commands the roots of earth.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Polearm</span>
-                                <span class="material-symbols-outlined text-emerald-500 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-emerald-500 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Unshakeable as the bedrock of the islands. Bumi commands the very roots of the earth
+                                    to shield his allies and crush his foes under the weight of ancient stone.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>DEF: <b class="text-white">S</b></span>
+                                        <span>HP: <b class="text-white">A</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-emerald-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-purple-500/50">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(240deg);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-purple-500/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(168,85,247,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-purple-500/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-purple-500 text-base">auto_awesome</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-purple-500/30 flex items-center justify-center shadow-lg group-hover:bg-purple-900/50 group-hover:border-purple-500 transition-colors">
+                            <span class="material-symbols-outlined text-purple-500 text-xl">auto_awesome</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    CITRA</h3>
-                                <div class="flex text-purple-500 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        CITRA</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-purple-500 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Electro Catalyst</div>
+                                </div>
+                                <div class="flex text-purple-500 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-purple-500 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                A master of deception and reality warping illusions.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Catalyst</span>
-                                <span class="material-symbols-outlined text-purple-500 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-purple-500 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    A master of deception and reality warping illusions. Citra dances through the
+                                    battlefield, leaving behind electric mirages that confuse enemies before delivering
+                                    a fatal blow.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>EM: <b class="text-white">S</b></span>
+                                        <span>ATK: <b class="text-white">A</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-purple-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-blue-500/50">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: brightness(0.8) hue-rotate(10deg);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-blue-500/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(59,130,246,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-blue-500/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-blue-500 text-base">water_drop</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-blue-500/30 flex items-center justify-center shadow-lg group-hover:bg-blue-900/50 group-hover:border-blue-500 transition-colors">
+                            <span class="material-symbols-outlined text-blue-500 text-xl">water_drop</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    TIRTA</h3>
-                                <div class="flex text-blue-500 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        TIRTA</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Hydro Healer</div>
+                                </div>
+                                <div class="flex text-blue-500 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-blue-500 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Graceful and serene. Her hydro powers mend wounds.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Catalyst</span>
-                                <span class="material-symbols-outlined text-blue-500 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-blue-500 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Graceful and serene as a calm sea. Her hydro powers mend wounds and cleanse spirits,
+                                    but like the ocean, she can become a crashing wave of destruction when angered.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>HEAL: <b class="text-white">S</b></span>
+                                        <span>HP: <b class="text-white">S</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-blue-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-amber-200/50">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc'); filter: sepia(0.8);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-amber-200/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(253,230,138,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-amber-200/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-amber-200 text-base">sunny</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-amber-200/30 flex items-center justify-center shadow-lg group-hover:bg-amber-900/50 group-hover:border-amber-200 transition-colors">
+                            <span class="material-symbols-outlined text-amber-200 text-xl">sunny</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    SURYA</h3>
-                                <div class="flex text-amber-200 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        SURYA</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-amber-200 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Light Claymore</div>
+                                </div>
+                                <div class="flex text-amber-200 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-amber-200 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Radiant and just. Banishes shadows with blinding light.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Claymore</span>
-                                <span class="material-symbols-outlined text-amber-200 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-amber-200 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Radiant and just. Banishes shadows with blinding light. He stands as a beacon of
+                                    hope for the people, his greatsword cleaving through the darkness of the Void.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>ATK: <b class="text-white">A</b></span>
+                                        <span>DEF: <b class="text-white">A</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-amber-200 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2">
+                    class="group relative h-[480px] bg-surface-dark clip-corner hover:z-10 transition-all duration-300 hover:-translate-y-2 border border-white/5 hover:border-slate-400/50">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k'); filter: grayscale(0.8) contrast(1.4);">
                     </div>
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent">
                     </div>
                     <div
                         class="absolute inset-0 border-[2px] border-transparent group-hover:border-slate-400/50 transition-colors duration-300 pointer-events-none clip-corner shadow-[inset_0_0_20px_rgba(148,163,184,0.2)]">
                     </div>
                     <div class="absolute top-3 left-3 z-20">
                         <div
-                            class="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-slate-400/30 flex items-center justify-center shadow-lg">
-                            <span class="material-symbols-outlined text-slate-400 text-base">shield</span>
+                            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-slate-400/30 flex items-center justify-center shadow-lg group-hover:bg-slate-700/50 group-hover:border-slate-400 transition-colors">
+                            <span class="material-symbols-outlined text-slate-400 text-xl">shield</span>
                         </div>
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 w-full p-5 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        class="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full bg-gradient-to-t from-black/95 via-black/70 to-transparent">
                         <div
-                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                             <div class="flex justify-between items-end mb-1">
-                                <h3
-                                    class="text-2xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
-                                    BAJA</h3>
-                                <div class="flex text-slate-400 scale-75 origin-bottom-right">
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
-                                    <span class="material-symbols-outlined fill text-xs">star</span>
+                                <div>
+                                    <h3
+                                        class="text-3xl font-display font-black text-white italic tracking-wide uppercase drop-shadow-md">
+                                        BAJA</h3>
+                                    <div
+                                        class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 opacity-80 group-hover:opacity-100">
+                                        Steel Defender</div>
+                                </div>
+                                <div class="flex text-slate-400 scale-90 origin-bottom-right mb-1">
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
+                                    <span class="material-symbols-outlined fill text-sm">star</span>
                                 </div>
                             </div>
-                            <div class="w-8 h-1 bg-slate-400 mb-2"></div>
-                            <p
-                                class="text-gray-300 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden mb-3">
-                                Impenetrable and unyielding. The living fortress.
-                            </p>
-                            <div class="flex items-center justify-between pt-3 border-t border-white/10">
-                                <span
-                                    class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Shield</span>
-                                <span class="material-symbols-outlined text-slate-400 text-lg">arrow_forward</span>
+                            <div class="w-12 h-1 bg-slate-400 mb-4 rounded-full"></div>
+                            <div
+                                class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto overflow-hidden">
+                                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                    Impenetrable and unyielding. The living fortress who turned his own body into the
+                                    ultimate weapon. No blade can pierce his resolve, and no enemy can break his
+                                    formation.
+                                </p>
+                                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                                    <div class="flex gap-3 text-xs text-gray-400 font-mono">
+                                        <span>DEF: <b class="text-white">SS</b></span>
+                                        <span>HP: <b class="text-white">A</b></span>
+                                    </div>
+                                    <button
+                                        class="flex items-center gap-1 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider">
+                                        Profile <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="group relative h-[420px] bg-surface-dark/50 clip-corner border border-white/5 flex flex-col items-center justify-center text-center p-8 transition-colors hover:bg-surface-dark hover:border-primary/20">
+                    class="group relative h-[480px] bg-surface-dark/50 clip-corner border border-white/5 flex flex-col items-center justify-center text-center p-8 transition-colors hover:bg-surface-dark hover:border-primary/20">
                     <div
-                        class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        class="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-white/10 group-hover:border-primary/50">
                         <span
-                            class="material-symbols-outlined text-gray-600 text-2xl group-hover:text-primary transition-colors">lock</span>
+                            class="material-symbols-outlined text-gray-600 text-3xl group-hover:text-primary transition-colors">lock</span>
                     </div>
                     <h3
-                        class="text-xl font-display font-bold text-gray-500 uppercase tracking-wide mb-2 group-hover:text-white transition-colors">
+                        class="text-2xl font-display font-bold text-gray-500 uppercase tracking-wide mb-2 group-hover:text-white transition-colors">
                         Coming Soon</h3>
-                    <p class="text-gray-600 text-sm">More heroes are joining the fight.</p>
+                    <p class="text-gray-600 text-sm max-w-[200px]">More heroes from across the Nusantara archipelago are
+                        joining the fight.</p>
                 </div>
             </div>
             <div class="flex justify-center">

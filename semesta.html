@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Halaman Semesta PATRION</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4c025",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#7f1d1d",
+                        "secondary-red-dark": "#450a0a",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1a1614",
+                        "surface-dark": "#2a2420",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(26, 22, 20, 0.3), rgba(26, 22, 20, 1))',
+                        'card-gradient': 'linear-gradient(135deg, rgba(42, 36, 32, 0.9) 0%, rgba(26, 22, 20, 0.95) 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(127, 29, 29, 0.4) 0%, rgba(26, 22, 20, 0) 70%)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1614;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f4c025;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c69a1b;
+        }
+
+        .glass-panel {
+            background: rgba(42, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 192, 37, 0.1);
+        }
+
+        .hero-glow {
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.3);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden flex flex-col min-h-screen">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded-lg shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                        <span class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Beranda</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Karakter</a>
+                        <a class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Semesta</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Game</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group bg-primary hover:bg-white text-background-dark font-display font-bold py-2 px-6 rounded transition-all duration-300 overflow-hidden shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.6)]">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">login</span>
+                            Login
+                        </span>
+                        <div
+                            class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary/20">
+                        </div>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="relative pt-32 pb-24 min-h-screen bg-background-dark overflow-hidden flex-grow" id="semesta">
+        <div
+            class="absolute top-0 w-full h-[500px] bg-gradient-to-b from-[#7f1d1d]/20 to-transparent pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/4 left-[-100px] w-[300px] h-[300px] bg-secondary-red/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-12 text-center">
+                <span
+                    class="text-primary font-bold tracking-widest uppercase text-sm mb-4 flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5">
+                    <span class="material-symbols-outlined text-sm">movie</span> Entertainment Universe
+                </span>
+                <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-6 hero-glow">Patrion Universe
+                    Programs</h1>
+                <p class="text-gray-400 max-w-2xl text-lg leading-relaxed">Immersive stories across all dimensions.
+                    Explore our collection of Cinema, TV Series, OTT exclusives, and Digital content.</p>
+            </div>
+            <div class="flex justify-center mb-16 relative z-20">
+                <div
+                    class="inline-flex flex-wrap items-center justify-center p-2 rounded-full bg-surface-dark/80 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_-10px_rgba(0,0,0,0.5)] gap-2">
+                    <button
+                        class="group relative px-6 py-2.5 rounded-full bg-gradient-to-br from-primary to-primary-dark text-background-dark font-display font-bold text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.5)] transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+                            All Programs
+                        </span>
+                    </button>
+                    <button
+                        class="group relative px-6 py-2.5 rounded-full text-gray-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
+                        <span class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">movie</span>
+                            Cinema
+                        </span>
+                    </button>
+                    <button
+                        class="group relative px-6 py-2.5 rounded-full text-gray-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
+                        <span class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[20px] group-hover:text-green-500 transition-colors">tv</span>
+                            TV Series
+                        </span>
+                    </button>
+                    <button
+                        class="group relative px-6 py-2.5 rounded-full text-gray-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
+                        <span class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[20px] group-hover:text-blue-500 transition-colors">devices</span>
+                            OTT
+                        </span>
+                    </button>
+                    <button
+                        class="group relative px-6 py-2.5 rounded-full text-gray-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10">
+                        <span class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[20px] group-hover:text-purple-500 transition-colors">phone_iphone</span>
+                            Digital
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(244,192,37,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span
+                                class="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_rgba(244,192,37,0.8)] animate-pulse"></span>
+                            CINEMA
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-primary/20 shadow-lg text-primary mb-4 group-hover:border-primary/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">movie</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-primary transition-colors tracking-tight">
+                            The First Guardian</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            The origin story of Satria and the founding of the order. Witness the dawn of heroes in this
+                            cinematic masterpiece.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-primary/90 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-primary/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">calendar_month</span> Coming Soon
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(34,197,94,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg');">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+                            TV SERIES
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-green-500/20 shadow-lg text-green-500 mb-4 group-hover:border-green-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">tv</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-green-400 transition-colors tracking-tight">
+                            Neon Nights</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Investigating the supernatural under the city lights. A noir thriller where magic meets
+                            modern crime.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-green-500 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-green-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">play_circle</span> Now Streaming
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-green-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+                            OTT
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-blue-500/20 shadow-lg text-blue-500 mb-4 group-hover:border-blue-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">devices</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-blue-400 transition-colors tracking-tight">
+                            Dimensions</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            An anthology series exploring the multiverse. Infinite worlds, infinite possibilities, one
+                            connected universe.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-blue-400 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-blue-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">new_releases</span> New Episode
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-blue-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(168,85,247,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc');">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span
+                                class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span>
+                            DIGITAL
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-purple-500/20 shadow-lg text-purple-500 mb-4 group-hover:border-purple-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">phone_iphone</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-purple-400 transition-colors tracking-tight">
+                            Hero Shorts</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Quick bites of action and comedy featuring your favorites. Perfect entertainment for heroes
+                            on-the-go.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-purple-400 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-purple-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">update</span> Daily Updates
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-purple-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(34,197,94,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k');">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+                            TV SERIES
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-green-500/20 shadow-lg text-green-500 mb-4 group-hover:border-green-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">tv</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-green-400 transition-colors tracking-tight">
+                            Legends of Borneo</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Discovering ancient creatures in the deep rainforest. An adventure of survival against
+                            mythical odds.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-yellow-500 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-yellow-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">construction</span> In Production
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-green-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(244,192,37,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0'); filter: hue-rotate(-30deg);">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span
+                                class="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_rgba(244,192,37,0.8)] animate-pulse"></span>
+                            CINEMA
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-primary/20 shadow-lg text-primary mb-4 group-hover:border-primary/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">movie</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-primary transition-colors tracking-tight">
+                            The Golden Crisis</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            The heroes must unite to stop an economic collapse orchestrated by evil forces. A
+                            blockbuster event.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-gray-400 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">history</span> Released 2023
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1wk9RweL1VxyQ8DhEUqIe7q94Xw9ty57z3QUz-idBtwOrYM8z0Qdg_klGDvw0m4oiQ0HtSzpXtA5ZPFhvZu0BB0PV3i01MH9kyWwKK1GWB-5sgho06gyDZ-sxfV0OTzwrRWWbkS1-DEUOA7L4YlRet5GRUt8wzJWJBDdVnE9Dc3lcP__1Y-Fn7uwfy-eVfZxNu0d3PReb2NT7-sjE2HibAD1sbnyWxdNFXg3vpn_-6UpBqMzcnCBWQDUBboHoYKhZHm5MkT35Pdg'); filter: grayscale(100%);">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+                            OTT
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-blue-500/20 shadow-lg text-blue-500 mb-4 group-hover:border-blue-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">devices</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-blue-400 transition-colors tracking-tight">
+                            Shadow Files</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Documentary style investigation into the lore. Uncover the chilling truth behind the myths.
+                        </p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-blue-400 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-blue-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">layers</span> Season 2
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-blue-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(168,85,247,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtY5iombXRcfyR3sqT6dewr_Tr4N71jlFuFuSt_LqGiy7OLYoSVHfQvpy9UWgIU6YjhjtyB8Pl-UvrDDnV_oA5ycKLVqBkkEkWIJ6hqc_Ifu9XFWGlzUmHTbdBb54GH9wKnw8hVfh4i9r3iFggH-_bGc48SFRuibLUvVykQu6d3mD1VDLWIeAIWnkOIKbMhKavgSqMiD6gWX-41LzTGijriIClOWrHwh1TjnWwIwV3ZpPahSCMyHuFm2wkhNNEoQ3Z6sR5PX7AHmc'); filter: hue-rotate(45deg);">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span
+                                class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span>
+                            DIGITAL
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-purple-500/20 shadow-lg text-purple-500 mb-4 group-hover:border-purple-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">phone_iphone</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-purple-400 transition-colors tracking-tight">
+                            Comic Motion</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Animated comic books with full voice acting. See the panels come to life in vivid color.</p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-purple-400 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-purple-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">schedule</span> Weekly
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-purple-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-surface-dark/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(34,197,94,0.15)] flex flex-col h-full relative">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: hue-rotate(180deg);">
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg z-10">
+                            <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+                            TV SERIES
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow relative -mt-12 z-20">
+                        <div
+                            class="w-14 h-14 bg-gradient-to-br from-surface-dark to-black rounded-xl flex items-center justify-center border border-green-500/20 shadow-lg text-green-500 mb-4 group-hover:border-green-500/60 transition-colors">
+                            <span class="material-symbols-outlined text-2xl">tv</span>
+                        </div>
+                        <h4
+                            class="text-3xl font-display font-bold text-white mb-3 group-hover:text-green-400 transition-colors tracking-tight">
+                            Academy of Valor</h4>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed border-l-2 border-white/10 pl-4">
+                            Teen heroes learning to control their powers. High school drama meets super-powered threats.
+                        </p>
+                        <div class="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                            <span
+                                class="text-yellow-500 text-xs uppercase tracking-wider font-bold flex items-center gap-1.5 bg-yellow-500/10 px-3 py-1 rounded">
+                                <span class="material-symbols-outlined text-sm">person_add</span> Casting Now
+                            </span>
+                            <button
+                                class="w-10 h-10 rounded-full bg-white/5 hover:bg-green-500 hover:text-white flex items-center justify-center text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
