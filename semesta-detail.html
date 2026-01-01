@@ -1,26 +1,17 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Detail Program Semesta PATRION</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Material Symbols -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -28,464 +19,493 @@
                 extend: {
                     colors: {
                         "primary": "#f4c025",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#7f1d1d",
+                        "secondary-red-dark": "#450a0a",
                         "background-light": "#f8f8f5",
-                        "background-dark": "#231e10", /* Updated to match provided component bg */
-                        "secondary-dark": "#493f22",
-                        "text-gold": "#cbbc90",
+                        "background-dark": "#1a1614",
+                        "surface-dark": "#2a2420",
                     },
                     fontFamily: {
-                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
                         "body": ["Noto Sans", "sans-serif"],
                     },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
                     backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(35, 30, 16, 0.8), #231e10)",
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(26, 22, 20, 0.3), rgba(26, 22, 20, 1))',
+                        'card-gradient': 'linear-gradient(135deg, rgba(42, 36, 32, 0.9) 0%, rgba(26, 22, 20, 0.95) 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(127, 29, 29, 0.4) 0%, rgba(26, 22, 20, 0) 70%)',
                     }
                 },
             },
         }
     </script>
     <style>
-        /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #231e10;
+            background: #1a1614;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #493f22;
+            background: #f4c025;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #f4c025;
+            background: #c69a1b;
         }
 
-        /* Glass effect utility */
         .glass-panel {
-            background: rgba(35, 30, 16, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(73, 63, 34, 0.5);
+            background: rgba(42, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 192, 37, 0.1);
         }
 
-        .text-shadow {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .hero-glow {
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.3);
         }
     </style>
 </head>
 
 <body
-    class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
-    <!-- TopNavBar -->
-    <div class="w-full bg-[#231e10] border-b border-[#493f22] sticky top-0 z-50">
-        <div class="max-w-[1440px] mx-auto">
-            <header class="flex items-center justify-between whitespace-nowrap px-4 md:px-10 py-3">
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-4 text-white">
-                        <div class="size-8 text-primary">
-                            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-                                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">PATRION</h2>
-                    </div>
-                    <div class="hidden md:flex items-center gap-9">
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Semesta</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Berita</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Komunitas</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Toko</a>
-                    </div>
-                </div>
-                <div class="flex flex-1 justify-end gap-8">
-                    <label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
-                        <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
-                            <div
-                                class="text-[#cbbc90] flex border-none bg-[#493f22] items-center justify-center pl-4 rounded-l-lg border-r-0">
-                                <span class="material-symbols-outlined text-[20px]">search</span>
-                            </div>
-                            <input
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#493f22] focus:border-none h-full placeholder:text-[#cbbc90] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-                                placeholder="Search" value="" />
-                        </div>
-                    </label>
-                    <div class="flex gap-2">
-                        <button
-                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#231e10] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
-                            <span class="truncate">Masuk</span>
-                        </button>
-                        <button
-                            class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#493f22] text-white text-sm font-bold leading-normal tracking-[0.015em] border border-transparent hover:border-primary transition-colors">
-                            <span class="truncate">Daftar</span>
-                        </button>
-                    </div>
-                </div>
-            </header>
-        </div>
-    </div>
-    <!-- Main Content Container -->
-    <main class="flex-grow w-full relative">
-        <!-- Background Ambient Effect -->
-        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-            <!-- Top right glow -->
-            <div class="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full">
-            </div>
-            <!-- Bottom left glow -->
-            <div class="absolute top-[40%] -left-[10%] w-[500px] h-[500px] bg-red-900/20 blur-[100px] rounded-full">
-            </div>
-        </div>
-        <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-6 relative z-10">
-            <!-- Breadcrumbs -->
-            <div class="flex flex-wrap gap-2 py-4 mb-4">
-                <a class="text-[#cbbc90] text-sm font-medium leading-normal hover:text-primary transition-colors"
-                    href="#">Beranda</a>
-                <span class="text-[#cbbc90] text-sm font-medium leading-normal">/</span>
-                <a class="text-[#cbbc90] text-sm font-medium leading-normal hover:text-primary transition-colors"
-                    href="#">Semesta</a>
-                <span class="text-[#cbbc90] text-sm font-medium leading-normal">/</span>
-                <span class="text-white text-sm font-medium leading-normal">Patrion: Chronicles</span>
-            </div>
-            <!-- Hero & Details Split View -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
-                <!-- Left Column: Key Visual -->
-                <div class="col-span-1 lg:col-span-5 flex flex-col gap-4">
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden flex flex-col min-h-screen">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
                     <div
-                        class="relative w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-[#493f22] group">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                            data-alt="Epic fantasy warrior standing on a cliff edge looking at a glowing city"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVqsdGFuTSMlRjuPnTqhVgUAYjD2pdm2ms0bHX_u4Nug26AcXzyKcEEoy9KcEbb5z_zYjetoodmF1_GbUlPMA-S32bF3QMvFIcDFOJ2yx_VOYheZqjIEmnaP-OZVMfT-oEHHogQnBkX1yecjPkQAn3bZi1uIU7dAHgSYtjZaAOtGp9TNtVsF6wF0AemmJmVFwlc3FxUgzU7fs8g8b3eCoTxENa1-PQKEkEosktkwjLul-sGL7k210xo11W_TfdK7j4qweNKQTXUe0");'>
-                        </div>
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded-lg shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                        <span class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Beranda</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Karakter</a>
+                        <a class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Semesta</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Game</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group bg-primary hover:bg-white text-background-dark font-display font-bold py-2 px-6 rounded transition-all duration-300 overflow-hidden shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.6)]">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">login</span>
+                            Login
+                        </span>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-[#231e10] via-transparent to-transparent opacity-60">
+                            class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary/20">
                         </div>
-                        <!-- Floating Badge on Image -->
-                        <div
-                            class="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-[#493f22] rounded-lg px-3 py-1 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-sm">verified</span>
-                            <span class="text-xs font-bold text-white uppercase tracking-wider">Official Release</span>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="relative pt-24 pb-24 min-h-screen bg-background-dark overflow-hidden flex-grow" id="detail-semesta">
+        <div
+            class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-[#7f1d1d]/10 to-transparent pointer-events-none">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute top-[40%] left-[-200px] w-[500px] h-[500px] bg-secondary-red/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <nav aria-label="Breadcrumb" class="flex mb-8 text-sm text-gray-400">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a class="inline-flex items-center hover:text-white transition-colors" href="#">
+                            <span class="material-symbols-outlined mr-2 text-base">home</span>
+                            Beranda
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <a class="hover:text-white transition-colors" href="#">Semesta</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <a class="hover:text-white transition-colors" href="#">Cinema</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <span class="text-primary font-medium">The First Guardian</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 xl:col-span-3 space-y-6">
+                    <div
+                        class="relative group rounded-xl overflow-hidden shadow-[0_0_30px_rgba(244,192,37,0.15)] border-2 border-primary/20 bg-surface-dark transition-all duration-500 hover:shadow-[0_0_50px_rgba(244,192,37,0.3)] hover:border-primary/50">
+                        <div class="aspect-[2/3] w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0');">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 text-center">
+                            <div
+                                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-xs font-bold text-white shadow-lg">
+                                <span class="material-symbols-outlined text-sm text-primary">star</span>
+                                4.9/5 Audience Rating
+                            </div>
                         </div>
                     </div>
-                    <!-- Quick Stats Row (Mobile only, hidden on large desktop usually, but kept for balance) -->
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">group</span>
-                            <p class="text-xs text-[#cbbc90]">Pemain</p>
-                            <p class="text-white font-bold text-sm">2.4M</p>
+                    <button
+                        class="w-full lg:hidden bg-primary hover:bg-white text-background-dark font-display font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(244,192,37,0.3)] flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">play_arrow</span>
+                        Watch Trailer
+                    </button>
+                    <div class="bg-surface-dark/40 backdrop-blur rounded-xl p-5 border border-white/5">
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 text-center">Share This
+                            Legend</p>
+                        <div class="flex justify-center gap-4">
+                            <button
+                                class="w-12 h-12 rounded-full bg-white/5 hover:bg-[#181717] border border-white/5 hover:border-white/20 hover:text-white flex items-center justify-center transition-all duration-300 text-gray-400 group">
+                                <span class="font-display font-bold text-lg">X</span>
+                            </button>
+                            <button
+                                class="w-12 h-12 rounded-full bg-white/5 hover:bg-[#1877F2] border border-white/5 hover:border-white/20 hover:text-white flex items-center justify-center transition-all duration-300 text-gray-400">
+                                <span class="font-display font-bold text-lg">f</span>
+                            </button>
+                            <button
+                                class="w-12 h-12 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark border border-white/5 hover:border-primary flex items-center justify-center transition-all duration-300 text-gray-400 shadow-lg hover:shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                                <span class="material-symbols-outlined text-xl">link</span>
+                            </button>
                         </div>
-                        <div class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">star</span>
-                            <p class="text-xs text-[#cbbc90]">Rating</p>
-                            <p class="text-white font-bold text-sm">4.9/5</p>
+                    </div>
+                    <div
+                        class="bg-surface-dark/40 backdrop-blur rounded-xl p-6 border border-white/5 text-sm space-y-4">
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500">Director</span>
+                            <span class="text-white font-medium">Aditya R.</span>
                         </div>
-                        <div class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">swords</span>
-                            <p class="text-xs text-[#cbbc90]">Difficulty</p>
-                            <p class="text-white font-bold text-sm">Hardcore</p>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500">Studio</span>
+                            <span class="text-white font-medium">Patrion Studios</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span class="text-gray-500">Language</span>
+                            <span class="text-white font-medium">Bahasa Indonesia</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Age Rating</span>
+                            <span class="text-white font-medium px-2 py-0.5 rounded bg-white/10 text-xs">13+</span>
                         </div>
                     </div>
                 </div>
-                <!-- Right Column: Details & Interaction -->
-                <div class="col-span-1 lg:col-span-7 flex flex-col h-full">
-                    <!-- Header Info -->
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span
-                                class="bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">RPG</span>
-                            <span
-                                class="bg-white/10 text-white border border-white/20 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">Adventure</span>
+                <div class="lg:col-span-8 xl:col-span-9 flex flex-col h-full">
+                    <div class="mb-10 relative">
+                        <div
+                            class="absolute -top-10 -left-10 w-32 h-32 bg-primary/10 rounded-full blur-[50px] pointer-events-none">
                         </div>
-                        <h1
-                            class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-2 tracking-tight text-shadow">
-                            PATRION: <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#cbbc90]">CHRONICLES</span>
-                        </h1>
-                        <p class="text-[#cbbc90] text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-                            Forged in starlight, destined for glory. Embark on the journey that started it all.
+                        <div class="flex flex-wrap items-center gap-3 mb-6 relative z-10">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-wider uppercase flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">movie</span> Cinema
+                            </span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-bold tracking-wider uppercase">
+                                Action
+                            </span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-bold tracking-wider uppercase">
+                                Fantasy
+                            </span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 hero-glow leading-tight">
+                            The First Guardian</h1>
+                        <div class="flex items-center gap-6 text-gray-400 text-sm font-medium mb-8">
+                            <span class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-primary">calendar_month</span> Dec 2023</span>
+                            <span class="flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-primary">schedule</span> 2h 15m</span>
+                            <span class="flex items-center gap-2 text-green-400"><span
+                                    class="w-2 h-2 rounded-full bg-green-500"></span> Available Now</span>
+                        </div>
+                        <p
+                            class="text-xl text-gray-300 font-light leading-relaxed max-w-4xl border-l-4 border-primary pl-6 py-1 bg-gradient-to-r from-primary/5 to-transparent rounded-r-lg">
+                            "Before the order, there was only chaos. One warrior stood against the darkness to forge a
+                            new dawn."
                         </p>
                     </div>
-                    <!-- Chips/Tags -->
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">devices</span>
-                            <span class="text-xs font-medium text-gray-300">PC &amp; Mobile</span>
+                    <div class="mb-12">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-display font-bold text-white flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">play_circle</span> Official Trailer
+                            </h3>
                         </div>
                         <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">public</span>
-                            <span class="text-xs font-medium text-gray-300">Open World</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">cloud_sync</span>
-                            <span class="text-xs font-medium text-gray-300">Cross-Save</span>
+                            class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group bg-black">
+                            <iframe
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen="" class="w-full h-full" frameborder="0"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0"
+                                title="YouTube video player"></iframe>
                         </div>
                     </div>
-                    <!-- Actions -->
-                    <div class="flex flex-wrap gap-4 mb-10 pb-10 border-b border-[#493f22]">
-                        <button
-                            class="flex-1 sm:flex-none min-w-[180px] h-12 bg-primary hover:bg-[#ffcf3d] text-[#231e10] font-bold rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.5)] transform hover:-translate-y-0.5">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                            Mainkan Sekarang
-                        </button>
-                        <button
-                            class="flex-1 sm:flex-none min-w-[160px] h-12 bg-transparent border border-[#cbbc90] text-[#cbbc90] hover:text-white hover:border-white hover:bg-white/5 font-bold rounded-lg flex items-center justify-center gap-2 transition-all">
-                            <span class="material-symbols-outlined">movie</span>
-                            Tonton Trailer
-                        </button>
-                        <button
-                            class="size-12 rounded-lg border border-[#493f22] bg-[#2d2616] text-[#cbbc90] flex items-center justify-center hover:text-white hover:border-white transition-colors ml-auto sm:ml-0">
-                            <span class="material-symbols-outlined">share</span>
-                        </button>
-                    </div>
-                    <!-- Tabbed Content Area -->
-                    <div class="flex flex-col flex-1">
-                        <!-- Custom Tabs Header -->
-                        <div class="flex gap-8 border-b border-[#493f22] mb-6">
-                            <button
-                                class="pb-3 text-white border-b-2 border-primary font-bold text-sm tracking-wide">RINGKASAN</button>
-                            <button
-                                class="pb-3 text-[#8a8166] hover:text-[#cbbc90] font-medium text-sm tracking-wide transition-colors">CERITA</button>
-                            <button
-                                class="pb-3 text-[#8a8166] hover:text-[#cbbc90] font-medium text-sm tracking-wide transition-colors">HADIAH</button>
-                        </div>
-                        <!-- Tab Content -->
-                        <div class="space-y-6 text-[#cbbc90] leading-7 font-light text-sm md:text-base">
-                            <p>
-                                <strong class="text-white font-bold block mb-2 text-lg">Experience the legendary
-                                    journey.</strong>
-                                Masuki dunia Teyvat yang luas dan penuh kehidupan. Jelajahi tujuh bangsa, temui beragam
-                                karakter dengan kemampuan unik, dan ungkap misteri yang menyelimuti dunia ini. Patrion
-                                Chronicles membawa elemen RPG klasik dengan sentuhan modern action combat yang fluid.
-                            </p>
-                            <p>
-                                Sistem pertarungan elemen yang mendalam memungkinkan pemain untuk menggabungkan kekuatan
-                                alam—Api, Air, Es, Petir, dan lainnya—untuk menciptakan reaksi berantai yang
-                                menghancurkan.
-                            </p>
-                            <!-- Feature List -->
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Peta dunia terbuka tanpa batas loading screen.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Co-op multiplayer hingga 4 pemain.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Update konten berkala setiap 6 minggu.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Musik orkestra live yang memukau.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Gallery Section -->
-            <div class="mb-20">
-                <div class="flex items-center justify-between mb-8">
-                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="w-1 h-8 bg-primary rounded-full"></span>
-                        Galeri Visual
-                    </h3>
-                    <a class="text-[#cbbc90] text-sm font-medium hover:text-white flex items-center gap-1 transition-colors"
-                        href="#">
-                        Lihat Semua <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                    </a>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div
-                        class="aspect-video rounded-lg overflow-hidden border border-[#493f22] relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Screenshot of a magical forest landscape with glowing plants"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm4NxgMhp0O1r7qIeKDH53DOq34l7Olp-2-LwPqkj7xs-QpRiBJQyly5Y8cBI8u2n2LEELmYzOSkzT37AFtNpsaT-JggoWaH2eWMtnjEy4dYGpJjC8wuAZ1CIsE2SSoTZOdG3cRcnOnuo7N_DHnBD4aHkUGT-VHanMRcTJfFB8fQmtjfKuRvIgKAwZ0J4QWonMeLNixOHDdI0WvF2Jm2a7KPVTfq-mpILPpjAS_lha8vIUBIxB5w-Yha1Wymsbk4rpZarkhf61MH8");'>
-                        </div>
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div
-                        class="aspect-video rounded-lg overflow-hidden border border-[#493f22] relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Detailed close up of a golden sword hilt with gems"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPXmodmOc_b3RadyrRvOT8ebkJTyAkfGMzsBIN831--_JRGW3q-y1S0c05rgRiFUPrjc0aDPnqbYWm7V2J-83x3YkJ48c44jET_c4apG4TsK4klnWIcIE47s7Hu4vT-wG_NM29ZLlNpWUL59pzr0o5KTASwCE3q7rBwbgVHkKoJjyNRbIUHmUzJOJeOSGdaoJrCxoBoiDGcTzan8uePtWhHognJs-YFXOVHF9bySZDdZzyBshh4YJzQ_IXt7fGCp0-56_Krqx55VQ");'>
-                        </div>
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div
-                        class="aspect-video rounded-lg overflow-hidden border border-[#493f22] relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Abstract mystical blue and purple energy swirl"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFH0VCxycd4Jyr7Ct65x0NSqQxEkGNE15qn56z34su3jvwoFssMZlUzn5cUrXdApCJuk9AMGS8-cIuInn2JfAuTglZWsioqzDAPK3i7V5NPvXAPnkkRC79VKAXRw6WS3dtYR0x8QaAbJqodiCh7CNzt3tBXtmj3Zo_NHMPbIYI3A0jA0OmVkWXtFh6Fw4UbdwzsvmkJPlxGtHQqXFkQ08ZOK5-V7HWa5PqgoAqiHVwLeBGUCYiEv1mjeidu8Of9KXbdAu9bLKpsQg");'>
-                        </div>
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div
-                        class="aspect-video rounded-lg overflow-hidden border border-[#493f22] relative group cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                            data-alt="Character standing in front of a giant ancient stone gate"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAa5pBL0epVWBqHzDcvoeWXZeI5Jtaom2Eyc_-_vgFDDhcnkxcsJcxt7_2AAqS8uAMHiUMwGnGy5VUpzYz1pIqa4YCP3lIFqc16C8Zm1eS4oxs-YuZ3Dwqpa4tW_Dxs4-RBlvH0uXHsdl4o2uvXAc6eYBy2JfePgw6uzt0a85qK75LwnWm_nCCGWTkU6SO7BSihWPUI8hfgZNvw-7Mtz7M6RBeLhmgh-79pcPF7eQQfE6U_3xrp9-942RAeRFZ2t_mlYJ4T3Or-E4k");'>
-                        </div>
-                        <div
-                            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center transition-colors">
-                            <span class="material-symbols-outlined text-white/80 text-4xl">collections</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Related Programs -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white flex items-center gap-3 mb-8">
-                    <span class="w-1 h-8 bg-red-800 rounded-full"></span>
-                    Program Lain di Semesta Ini
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Card 1 -->
-                    <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                        href="#">
-                        <div class="h-48 bg-cover bg-center relative"
-                            data-alt="Futuristic cyber city landscape at night"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8lHL6Jf5e6XGwDOkldd9lcvALs59wLfaN3DZA9E9Gc52hozh-W-WEZvle5zrZ9SwDXUUBLZqw8FLkbmlbXh0UxqgXZWrZShc34ov4W6U_gb4Y4GNpOYRCdLGlbHRu9Qbk2r73yxrtusQMO2bwOdwdLWfKJyf0JI4xr_yaDmizxzayxZpJiIXFh9ThSxMv-BU9dWTiiOwkNxtyNtcm2a8TJorEjg3L-OYkxw6gSS1DUJSD1r-bc9OF9MywmW3bmu8t9CeXEZzIqBg");'>
-                            <div
-                                class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-primary uppercase border border-[#493f22]">
-                                Sci-Fi</div>
-                        </div>
-                        <div class="p-5">
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                                Patrion: Starrail</h4>
-                            <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Perjalanan melintasi galaksi dengan
-                                kereta api astral. Temukan dunia baru.</p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex text-primary text-xs">
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star_half</span>
-                                </div>
-                                <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Update v2.1</span>
+                    <div class="mb-12">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-display font-bold text-white flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">list_alt</span> Daftar Episode
+                            </h3>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 rounded bg-primary/20 border border-primary text-primary text-xs font-bold">Season
+                                    1</span>
+                                <span
+                                    class="px-3 py-1 rounded bg-white/5 border border-white/10 text-gray-400 text-xs font-bold hover:bg-white/10 cursor-pointer transition-colors">Season
+                                    2</span>
                             </div>
                         </div>
-                    </a>
-                    <!-- Card 2 -->
-                    <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                        href="#">
-                        <div class="h-48 bg-cover bg-center relative"
-                            data-alt="Dark moody room with red lighting and shadows"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLVFrsFbgCrUcrpugnMY0OeOOKXPfBC7XshpF0O-fAMOuHJTJZQSA8Shl2z478BLne3AcI7VCqaBILEma0tuXzMLMAEnUYh-HTIn04DxcTk5ubYnhMqHT5Ko28W3Y4JVqx7yXU-XQOhyigK3gEYfrOn-9XIDwLBIBo_FXGeFLQLhCA7PBDm4EtBJqfHRdND_iDVKo230MlaOhnupCaONZ7jDtPSWyVMLPsmDeskaF6--4xneS9CSIGouktBGRupIgSIdMHcOzd2_A");'>
-                            <div
-                                class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-red-500 uppercase border border-[#493f22]">
-                                Horror</div>
-                        </div>
-                        <div class="p-5">
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                                Patrion: Abyss</h4>
-                            <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Survival horror di kedalaman laut yang
-                                tak terjamah cahaya matahari.</p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex text-primary text-xs">
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px] text-[#493f22]">star</span>
+                        <div class="bg-surface-dark/40 backdrop-blur rounded-xl border border-white/5 overflow-hidden">
+                            <div class="divide-y divide-white/5">
+                                <div
+                                    class="p-4 hover:bg-white/5 transition-colors group cursor-pointer flex flex-col sm:flex-row gap-4">
+                                    <div
+                                        class="relative w-full sm:w-40 aspect-video rounded bg-black flex-shrink-0 overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-br from-surface-dark to-black flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-white/20 text-3xl group-hover:text-primary transition-colors">play_circle</span>
+                                        </div>
+                                        <span
+                                            class="absolute bottom-1 right-1 bg-black/80 text-[10px] text-white px-1.5 py-0.5 rounded font-medium">45:20</span>
+                                    </div>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <div class="flex justify-between items-start mb-1">
+                                            <h4
+                                                class="text-white font-bold group-hover:text-primary transition-colors text-lg">
+                                                Ep 1. The Awakening</h4>
+                                            <span class="text-gray-500 text-xs font-mono">Released 10/12/23</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm line-clamp-2 mb-2">
+                                            Satria's peaceful life in the village is disrupted when strange dark
+                                            creatures begin to appear from the forest. An ancient artifact reacts to his
+                                            presence.
+                                        </p>
+                                    </div>
                                 </div>
-                                <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Coming Soon</span>
+                                <div
+                                    class="p-4 hover:bg-white/5 transition-colors group cursor-pointer flex flex-col sm:flex-row gap-4">
+                                    <div
+                                        class="relative w-full sm:w-40 aspect-video rounded bg-black flex-shrink-0 overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-br from-surface-dark to-black flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-white/20 text-3xl group-hover:text-primary transition-colors">play_circle</span>
+                                        </div>
+                                        <span
+                                            class="absolute bottom-1 right-1 bg-black/80 text-[10px] text-white px-1.5 py-0.5 rounded font-medium">42:15</span>
+                                    </div>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <div class="flex justify-between items-start mb-1">
+                                            <h4
+                                                class="text-white font-bold group-hover:text-primary transition-colors text-lg">
+                                                Ep 2. Whispers of the Old Gods</h4>
+                                            <span class="text-gray-500 text-xs font-mono">Released 17/12/23</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm line-clamp-2 mb-2">
+                                            Seeking answers, Satria travels to the Temple of Bromo. There, he meets the
+                                            Sage who reveals the prophecy of the First Guardian.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-4 hover:bg-white/5 transition-colors group cursor-pointer flex flex-col sm:flex-row gap-4">
+                                    <div
+                                        class="relative w-full sm:w-40 aspect-video rounded bg-black flex-shrink-0 overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-br from-surface-dark to-black flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-white/20 text-3xl group-hover:text-primary transition-colors">play_circle</span>
+                                        </div>
+                                        <span
+                                            class="absolute bottom-1 right-1 bg-black/80 text-[10px] text-white px-1.5 py-0.5 rounded font-medium">48:05</span>
+                                    </div>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <div class="flex justify-between items-start mb-1">
+                                            <h4
+                                                class="text-white font-bold group-hover:text-primary transition-colors text-lg">
+                                                Ep 3. Trial by Fire</h4>
+                                            <span class="text-gray-500 text-xs font-mono">Released 24/12/23</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm line-clamp-2 mb-2">
+                                            To wield the Sun Shield, Satria must pass the trials of the volcano. Not
+                                            everyone who enters returns.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="p-3 bg-white/5 text-center border-t border-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                                <span class="text-primary text-sm font-bold flex items-center justify-center gap-2">View
+                                    All Episodes <span
+                                        class="material-symbols-outlined text-base">expand_more</span></span>
                             </div>
                         </div>
-                    </a>
-                    <!-- Card 3 -->
-                    <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                        href="#">
-                        <div class="h-48 bg-cover bg-center relative"
-                            data-alt="Digital grid landscape representing virtual reality"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwIfqnO13uYHR_s2k4fmPtKKhIupsE6t43FILMIW1VVnu_BYOaB1Dd4TZDwoYIBR3nljTVP15jqk5-QokxKhIjIf7Uq0y_-EcKudcM7aGho0q22MC-8fTSHpMnPZJkRwA9Vmwz6XJvst_gzMSo8e999oawX9IWlERwK-lRdCFWd_STFwbyxaKqO-bnBRPyCJyGj6D7Rag61hNXW08lpCBKSczXrfj46CFGoTAIUw6Oj7iJeSIpR6vX_SsipZWVh72NONHoUrZ1GF8");'>
-                            <div
-                                class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-blue-400 uppercase border border-[#493f22]">
-                                Sim</div>
-                        </div>
-                        <div class="p-5">
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                                Patrion: Nexus</h4>
-                            <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Bangun utopia digitalmu sendiri dalam
-                                simulasi manajemen kota tercanggih.</p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex text-primary text-xs">
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                    <span class="material-symbols-outlined text-[16px]">star</span>
-                                </div>
-                                <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Baru</span>
+                    </div>
+                    <div class="space-y-8">
+                        <div
+                            class="bg-surface-dark/60 backdrop-blur border border-white/5 rounded-2xl p-6 md:p-8 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-8 opacity-5">
+                                <span class="material-symbols-outlined text-9xl text-white">auto_stories</span>
+                            </div>
+                            <h3
+                                class="text-2xl font-display font-bold text-primary mb-6 border-b border-white/10 pb-4 inline-block pr-12">
+                                Cerita (Story)</h3>
+                            <div class="space-y-6 text-gray-300 leading-relaxed text-lg font-light">
+                                <p>
+                                    In an age where myths breathe and legends walk among us, <strong
+                                        class="text-white">The First Guardian</strong> chronicles the perilous journey
+                                    of Satria. Born into a world teetering on the brink of annihilation by the Void
+                                    Legion, Satria discovers an ancient artifact—the Sun Shield—that chooses him as its
+                                    bearer.
+                                </p>
+                                <p>
+                                    Reluctant at first, he must master the forgotten arts of the light to unite the
+                                    fractured tribes of the Nusantara archipelago. But power comes at a cost. As the
+                                    darkness grows stronger, Satria faces a choice that will echo through eternity:
+                                    sacrifice his humanity to save the world, or remain human and watch it burn.
+                                </p>
+                                <p>
+                                    This cinematic masterpiece lays the foundation for the entire PATRION universe,
+                                    introducing key characters like The Sage of Bromo and the Shadow Walker, who will
+                                    play pivotal roles in future installments.
+                                </p>
                             </div>
                         </div>
-                    </a>
+                        <div
+                            class="bg-gradient-to-br from-surface-dark/80 to-[#1a1614] border border-primary/20 rounded-2xl p-6 md:p-8 relative overflow-hidden group hover:border-primary/40 transition-colors">
+                            <div
+                                class="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-[60px] pointer-events-none group-hover:bg-primary/20 transition-colors">
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                                <div>
+                                    <h3 class="text-2xl font-display font-bold text-white mb-1 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-primary">redeem</span>
+                                        Hadiah &amp; Koleksi
+                                    </h3>
+                                    <p class="text-gray-400 text-sm">Exclusive digital rewards for community members.
+                                    </p>
+                                </div>
+                                <button
+                                    class="text-primary hover:text-white text-sm font-bold flex items-center gap-1 transition-colors">
+                                    View All Rewards <span
+                                        class="material-symbols-outlined text-base">arrow_forward</span>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div
+                                    class="bg-white/5 border border-white/5 rounded-xl p-4 flex gap-4 items-center group/card cursor-pointer hover:bg-white/10 hover:border-primary/30 transition-all">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center text-background-dark shadow-lg group-hover/card:scale-105 transition-transform">
+                                        <span class="material-symbols-outlined text-3xl">wallpaper</span>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h5
+                                            class="text-white font-bold group-hover/card:text-primary transition-colors">
+                                            4K Wallpaper Pack</h5>
+                                        <p class="text-xs text-gray-500 mt-1">Free digital download.</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-gray-500 group-hover/card:text-primary transition-colors">download</span>
+                                </div>
+                                <div
+                                    class="bg-white/5 border border-white/5 rounded-xl p-4 flex gap-4 items-center group/card cursor-pointer hover:bg-white/10 hover:border-purple-500/30 transition-all">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center text-white shadow-lg group-hover/card:scale-105 transition-transform">
+                                        <span class="material-symbols-outlined text-3xl">military_tech</span>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h5
+                                            class="text-white font-bold group-hover/card:text-purple-400 transition-colors">
+                                            Guardian Badge</h5>
+                                        <p class="text-xs text-gray-500 mt-1">Unlock on your profile.</p>
+                                    </div>
+                                    <button
+                                        class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-3 py-1.5 rounded transition-colors shadow-lg">Claim</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-    <!-- Simple Footer -->
-    <footer class="bg-[#1a160c] border-t border-[#493f22] pt-12 pb-8">
-        <div class="max-w-[1200px] mx-auto px-4 md:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-                <div class="max-w-sm">
-                    <div class="flex items-center gap-2 text-white mb-4">
-                        <div class="size-6 text-primary">
-                            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-                                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
                         </div>
-                        <h2 class="text-xl font-bold tracking-tight">PATRION</h2>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
                     </div>
-                    <p class="text-[#8a8166] text-sm leading-relaxed">
-                        Patrion adalah platform hiburan digital terdepan yang menghubungkan jutaan pemain di seluruh
-                        dunia melalui cerita epik dan gameplay yang imersif.
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
                     </p>
                 </div>
-                <div class="flex gap-16">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
                     <div>
-                        <h5 class="text-white font-bold mb-4">Perusahaan</h5>
-                        <ul class="space-y-2 text-sm text-[#8a8166]">
-                            <li><a class="hover:text-primary" href="#">Tentang Kami</a></li>
-                            <li><a class="hover:text-primary" href="#">Karir</a></li>
-                            <li><a class="hover:text-primary" href="#">Press Kit</a></li>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-4">Dukungan</h5>
-                        <ul class="space-y-2 text-sm text-[#8a8166]">
-                            <li><a class="hover:text-primary" href="#">Pusat Bantuan</a></li>
-                            <li><a class="hover:text-primary" href="#">Kebijakan Privasi</a></li>
-                            <li><a class="hover:text-primary" href="#">Syarat Layanan</a></li>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-[#2d2616] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-[#493f22] text-xs">© 2024 Patrion Universe. All rights reserved.</p>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
                 <div class="flex gap-4">
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">public</span></a>
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">chat</span></a>
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">mail</span></a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
                 </div>
             </div>
         </div>

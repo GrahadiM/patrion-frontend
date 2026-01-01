@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PATRION - Games</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4c025",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#7f1d1d",
+                        "secondary-red-dark": "#450a0a",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1a1614", // Warmer dark background
+                        "surface-dark": "#2a2420",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(26, 22, 20, 0.3), rgba(26, 22, 20, 1))',
+                        'card-gradient': 'linear-gradient(135deg, rgba(42, 36, 32, 0.9) 0%, rgba(26, 22, 20, 0.95) 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(127, 29, 29, 0.4) 0%, rgba(26, 22, 20, 0) 70%)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1614;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f4c025;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c69a1b;
+        }
+
+        .glass-panel {
+            background: rgba(42, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 192, 37, 0.1);
+        }
+
+        .hero-glow {
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.3);
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(to bottom, rgba(244, 192, 37, 0) 0%, rgba(244, 192, 37, 0.5) 50%, rgba(244, 192, 37, 0) 100%) 1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .text-shadow-sm {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded-lg shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                        <span class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Beranda</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Karakter</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Semesta</a>
+                        <a class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Game</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group bg-primary hover:bg-white text-background-dark font-display font-bold py-2 px-6 rounded transition-all duration-300 overflow-hidden shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.6)]">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">login</span>
+                            Login
+                        </span>
+                        <div
+                            class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary/20">
+                        </div>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-hero-gradient z-10"></div>
+            <div class="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105"
+                data-alt="Dark mysterious fantasy background"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); filter: brightness(0.7);">
+            </div>
+        </div>
+        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center gap-6 mt-16">
+            <div class="flex items-center gap-4 text-primary/80 mb-2">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
+                <span class="material-symbols-outlined text-sm">sports_esports</span>
+                <span class="font-display text-sm tracking-[0.3em] uppercase">Play the Legend</span>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
+            </div>
+            <h1 class="font-display font-black text-5xl md:text-7xl text-white tracking-tight leading-none hero-glow">
+                PATRION <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-primary to-[#b8860b]">GAMES</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed font-light">
+                Immersive worlds. Strategic battles. Unforgettable stories. Choose your path and start your adventure
+                today.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background-dark to-transparent z-20">
+        </div>
+    </div>
+    <section class="relative py-24 bg-background-dark overflow-hidden" id="games-list">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-red/5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px]"></div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col items-center mb-16 text-center">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Available Titles</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary-red"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                <div
+                    class="group relative h-[550px] rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-500 shadow-2xl flex flex-col">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent">
+                    </div>
+                    <div class="absolute top-6 right-6 z-20">
+                        <div
+                            class="w-16 h-16 bg-black/40 backdrop-blur-md rounded-xl flex items-center justify-center border border-primary/30 shadow-[0_0_15px_rgba(244,192,37,0.2)]">
+                            <span class="material-symbols-outlined text-primary text-3xl">extension</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto relative p-8 md:p-10 w-full z-20">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-bold uppercase tracking-wider">Puzzle
+                                RPG</span>
+                            <span class="flex items-center text-yellow-400 text-xs font-bold gap-1">
+                                <span class="material-symbols-outlined text-sm filled"
+                                    style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                            </span>
+                        </div>
+                        <h3
+                            class="text-4xl font-display font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                            Rune Quest</h3>
+                        <p class="text-gray-300 mb-8 max-w-md leading-relaxed">Solve ancient mysteries and unlock the
+                            power of the runes in this addictive puzzle adventure. Master the elements and challenge the
+                            guardians.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <button
+                                class="flex items-center gap-2 bg-primary hover:bg-white text-background-dark font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(244,192,37,0.3)] hover:shadow-[0_0_25px_rgba(244,192,37,0.5)]">
+                                <span class="material-symbols-outlined">download</span> Download
+                            </button>
+                            <button
+                                class="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 border border-white/10">
+                                <span class="material-symbols-outlined">info</span> Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="group relative h-[550px] rounded-2xl overflow-hidden border border-white/10 hover:border-secondary-red/50 transition-all duration-500 shadow-2xl flex flex-col">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0'); filter: contrast(1.1);">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent">
+                    </div>
+                    <div class="absolute top-6 right-6 z-20">
+                        <div
+                            class="w-16 h-16 bg-black/40 backdrop-blur-md rounded-xl flex items-center justify-center border border-secondary-red/40 shadow-[0_0_15px_rgba(127,29,29,0.3)]">
+                            <span class="material-symbols-outlined text-secondary-red text-3xl">auto_stories</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto relative p-8 md:p-10 w-full z-20">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="px-3 py-1 bg-secondary-red/20 text-secondary-red border border-secondary-red/30 rounded-full text-xs font-bold uppercase tracking-wider">Visual
+                                Novel</span>
+                            <span
+                                class="px-2 py-0.5 bg-white/10 text-white border border-white/20 rounded text-[10px] font-bold uppercase">New
+                                Update</span>
+                        </div>
+                        <h3
+                            class="text-4xl font-display font-bold text-white mb-4 group-hover:text-secondary-red transition-colors">
+                            Echoes of Destiny</h3>
+                        <p class="text-gray-300 mb-8 max-w-md leading-relaxed">Your choices matter. Forge relationships
+                            and decide the fate of the Patrion universe in this narrative-driven experience.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <button
+                                class="flex items-center gap-2 bg-secondary-red hover:bg-white hover:text-secondary-red text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 border border-transparent hover:border-secondary-red shadow-[0_0_15px_rgba(127,29,29,0.4)]">
+                                <span class="material-symbols-outlined">play_arrow</span> Play Now
+                            </button>
+                            <button
+                                class="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 border border-white/10">
+                                <span class="material-symbols-outlined">videocam</span> Trailer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-24 relative rounded-2xl overflow-hidden bg-gradient-to-r from-secondary-red-dark to-background-dark border border-secondary-red/30 shadow-2xl">
+                <div
+                    class="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k')] bg-cover bg-center opacity-10 mix-blend-overlay">
+                </div>
+                <div class="absolute top-0 right-0 p-32 bg-primary/10 rounded-full blur-[80px]"></div>
+                <div class="relative z-10 p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="text-left">
+                        <h3 class="text-3xl font-display font-bold text-white mb-3">Ready to Join the Ranks?</h3>
+                        <p class="text-gray-300 max-w-lg text-lg">Create your Patrion account today to sync progress
+                            across all games and unlock exclusive rewards.</p>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-white text-background-dark font-display font-bold py-4 px-10 rounded-lg shadow-[0_0_20px_rgba(244,192,37,0.3)] transition-all duration-300 hover:scale-105 whitespace-nowrap flex items-center gap-2">
+                        <span class="material-symbols-outlined">person_add</span>
+                        BECOME A PATRION
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

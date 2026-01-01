@@ -1,19 +1,12 @@
-<!DOCTYPE html>
 <html class="dark" lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Detail Program Semesta PATRION</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <title>Aethelgard Chronicles - PATRION Games</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -21,782 +14,842 @@
                 extend: {
                     colors: {
                         "primary": "#f4c025",
+                        "primary-light": "#ffe066",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#9f1239",
+                        "secondary-red-dark": "#881337",
                         "background-light": "#f8f8f5",
-                        "background-dark": "#231e10",
-                        "secondary-dark": "#493f22",
-                        "text-gold": "#cbbc90",
+                        "background-dark": "#0c0a09",
+                        "surface-dark": "#1c1917",
+                        "surface-lighter": "#292524",
                     },
                     fontFamily: {
-                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
                         "body": ["Noto Sans", "sans-serif"],
                     },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
                     backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(35, 30, 16, 0.8), #231e10)",
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(12, 10, 9, 0.3), rgba(12, 10, 9, 1))',
+                        'gold-gradient': 'linear-gradient(135deg, #f4c025 0%, #c69a1b 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(159, 18, 57, 0.4) 0%, rgba(12, 10, 9, 0) 70%)',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' },
+                        }
+                    },
+                    animation: {
+                        fadeInUp: 'fadeInUp 0.8s ease-out forwards',
+                        shimmer: 'shimmer 1.5s infinite',
                     }
                 },
             },
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #231e10;
+            background: #1a1614;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #493f22;
+            background: #f4c025;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #f4c025;
+            background: #c69a1b;
         }
 
         .glass-panel {
-            background: rgba(35, 30, 16, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(73, 63, 34, 0.5);
+            background: rgba(28, 25, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .text-shadow {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .rpg-card {
+            background: linear-gradient(180deg, rgba(41, 37, 36, 0.8) 0%, rgba(28, 25, 23, 0.95) 100%);
+            border: 1px solid rgba(244, 192, 37, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
+        .rpg-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f4c025, transparent);
+            opacity: 0.5;
         }
 
-        #tab-ringkasan:checked~.content-ringkasan,
-        #tab-cerita:checked~.content-cerita,
-        #tab-hadiah:checked~.content-hadiah {
-            display: block;
+        .hero-glow {
+            text-shadow: 0 0 40px rgba(244, 192, 37, 0.4);
         }
 
-        #tab-ringkasan:checked~.tabs-nav label[for="tab-ringkasan"],
-        #tab-cerita:checked~.tabs-nav label[for="tab-cerita"],
-        #tab-hadiah:checked~.tabs-nav label[for="tab-hadiah"] {
-            color: #ffffff;
-            border-bottom-color: #f4c025;
-            border-bottom-width: 2px;
+        .corner-accent {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #f4c025;
+            transition: all 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .corner-tl {
+            top: 4px;
+            left: 4px;
+            border-right: none;
+            border-bottom: none;
         }
 
-        .share-tooltip {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s, visibility 0.3s;
+        .corner-tr {
+            top: 4px;
+            right: 4px;
+            border-left: none;
+            border-bottom: none;
         }
 
-        .share-btn:hover .share-tooltip {
-            visibility: visible;
-            opacity: 1;
+        .corner-bl {
+            bottom: 4px;
+            left: 4px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-br {
+            bottom: 4px;
+            right: 4px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .group:hover .corner-accent {
+            width: 12px;
+            height: 12px;
+            border-color: #fff;
+            box-shadow: 0 0 8px rgba(244, 192, 37, 0.8);
+        }
+
+        .dialogue-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #f4c025;
+            position: relative;
+        }
+
+        .heading-decoration {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .heading-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(45deg);
+            border: 1px solid #f4c025;
+            background: rgba(244, 192, 37, 0.1);
+        }
+
+        .pattern-bg {
+            background-image: radial-gradient(#f4c025 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.03;
+        }
+
+        .hover-gold-glow:hover {
+            box-shadow: 0 0 20px rgba(244, 192, 37, 0.2);
         }
     </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
-    <div class="w-full bg-[#231e10] border-b border-[#493f22] sticky top-0 z-50">
-        <div class="max-w-[1440px] mx-auto">
-            <header class="flex items-center justify-between whitespace-nowrap px-4 md:px-10 py-3">
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-4 text-white">
-                        <div class="size-8 text-primary">
-                            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-                                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg>
+<body class="bg-background-dark text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden scroll-smooth">
+    <div class="fixed inset-0 pattern-bg pointer-events-none z-0"></div>
+    <!-- <div class="fixed top-0 left-0 w-full h-[100vh] bg-gradient-to-b from-transparent via-background-dark/50 to-background-dark pointer-events-none z-0"> -->
+    </div>
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded transform rotate-45 shadow-[0_0_15px_rgba(244,192,37,0.4)] overflow-hidden transition-transform duration-500 hover:rotate-[225deg]">
+                        <div
+                            class="transform -rotate-45 flex items-center justify-center w-full h-full transition-transform duration-500 hover:rotate-[-225deg]">
+                            <span
+                                class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
                         </div>
-                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">PATRION</h2>
                     </div>
-                    <div class="hidden md:flex items-center gap-9">
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
+                    <span class="font-display font-bold text-2xl tracking-tight text-white ml-2">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-1">
+                        <a class="text-gray-400 hover:text-white px-4 py-2 rounded text-sm font-medium transition-colors duration-200 hover:bg-white/5"
+                            href="#">Beranda</a>
+                        <a class="text-gray-400 hover:text-white px-4 py-2 rounded text-sm font-medium transition-colors duration-200 hover:bg-white/5"
+                            href="#">Karakter</a>
+                        <a class="text-gray-400 hover:text-white px-4 py-2 rounded text-sm font-medium transition-colors duration-200 hover:bg-white/5"
                             href="#">Semesta</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Berita</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Komunitas</a>
-                        <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors"
-                            href="#">Toko</a>
+                        <a class="relative text-white px-4 py-2 rounded text-sm font-bold transition-colors duration-200"
+                            href="#">
+                            Game
+                            <span
+                                class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full shadow-[0_0_5px_#f4c025]"></span>
+                        </a>
                     </div>
                 </div>
-                <div class="flex flex-1 justify-end gap-8">
-                    <label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
-                        <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
-                            <div
-                                class="text-[#cbbc90] flex border-none bg-[#493f22] items-center justify-center pl-4 rounded-l-lg border-r-0">
-                                <span class="material-symbols-outlined text-[20px]">search</span>
-                            </div>
-                            <input
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#493f22] focus:border-none h-full placeholder:text-[#cbbc90] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-                                placeholder="Search" value="" />
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group overflow-hidden bg-transparent border border-primary/50 text-primary font-display font-bold py-2 px-6 rounded transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(244,192,37,0.3)]">
+                        <span class="relative z-10 flex items-center gap-2 text-sm uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-lg">login</span>
+                            Masuk
+                        </span>
+                        <div
+                            class="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                         </div>
-                    </label>
-                    <div class="flex gap-2">
-                        <button
-                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#231e10] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
-                            <span class="truncate">Masuk</span>
-                        </button>
-                        <button
-                            class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#493f22] text-white text-sm font-bold leading-normal tracking-[0.015em] border border-transparent hover:border-primary transition-colors">
-                            <span class="truncate">Daftar</span>
-                        </button>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-transparent to-background-dark z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-transparent to-background-dark/80 z-10"></div>
+            <div class="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-[20s] ease-linear hover:scale-110 motion-safe:animate-[pulse_10s_ease-in-out_infinite]" data-alt="Visual Novel Key Visual" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo'); animation-direction: alternate;">
+            </div>
+        </div>
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center animate-fadeInUp">
+                <div class="flex items-center gap-4 mb-8">
+                    <div
+                        class="flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur border border-white/10 rounded-full hover:bg-white/10 transition-colors duration-300 cursor-default">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white/90">Visual Novel</span>
+                    </div>
+                    <div
+                        class="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-black/60 backdrop-blur border border-white/10 rounded-full hover:bg-white/10 transition-colors duration-300 cursor-default">
+                        <span class="material-symbols-outlined text-secondary-red text-sm">favorite</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white/90">Romance Fantasy</span>
                     </div>
                 </div>
-            </header>
+                <h1
+                    class="font-display font-black text-6xl sm:text-7xl md:text-9xl text-white tracking-tighter leading-none hero-glow mb-6 relative group cursor-default">
+                    <span
+                        class="block text-stroke-sm md:text-stroke opacity-30 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 blur-sm select-none transition-all duration-700 group-hover:blur-md group-hover:opacity-50">AETHELGARD</span>
+                    AETHELGARD
+                    <span
+                        class="block text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.5em] text-primary mt-2 uppercase border-t border-b border-white/10 py-2 w-full max-w-2xl mx-auto bg-gradient-to-r from-transparent via-black/40 to-transparent backdrop-blur-sm transition-all duration-500 group-hover:tracking-[0.6em] group-hover:border-primary/30">Chronicles</span>
+                </h1>
+                <p
+                    class="text-gray-200 text-lg md:text-xl max-w-2xl leading-relaxed font-light mb-10 drop-shadow-md opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
+                    "When the world fractures, <span class="text-primary font-medium italic">love</span> is the only
+                    bridge that remains."
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto opacity-0 animate-[fadeIn_1s_ease-out_0.8s_forwards]">
+                    <button class="w-full sm:w-auto group relative bg-gradient-to-br from-primary to-primary-dark hover:brightness-110 text-background-dark font-display font-bold py-4 px-12 rounded overflow-hidden transition-all duration-300 shadow-[0_0_30px_rgba(244,192,37,0.3)] hover:shadow-[0_0_50px_rgba(244,192,37,0.5)] hover:-translate-y-1">
+                        <span class="relative z-10 flex items-center justify-center gap-3 text-lg tracking-wide">
+                            <span class="material-symbols-outlined filled">play_circle</span>
+                            MAINKAN SEKARANG
+                        </span>
+                        <div class="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform skew-x-[-20deg] animate-shimmer"></div>
+                    </button>
+                    <button
+                        class="w-full sm:w-auto group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md hover:bg-white/10 text-white font-display font-bold py-4 px-10 rounded border border-white/20 hover:border-primary/50 transition-all duration-300"
+                        onclick="document.getElementById('trailer').scrollIntoView({behavior: 'smooth'})">
+                        <span
+                            class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-primary group-hover:text-primary transition-colors">
+                            <span
+                                class="material-symbols-outlined text-sm group-hover:translate-y-1 transition-transform duration-300">arrow_downward</span>
+                        </span>
+                        <span class="uppercase tracking-wide text-sm">Trailer &amp; Info</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background-dark to-transparent z-20">
         </div>
     </div>
-    <main class="flex-grow w-full relative">
-        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-            <div class="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full">
-            </div>
-            <div class="absolute top-[40%] -left-[10%] w-[500px] h-[500px] bg-red-900/20 blur-[100px] rounded-full">
-            </div>
+    <div class="relative z-30">
+        <div
+            class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none translate-x-1/2 -translate-y-1/2">
         </div>
-        <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-6 relative z-10">
-            <div class="flex flex-wrap gap-2 py-4 mb-4">
-                <a class="text-[#cbbc90] text-sm font-medium leading-normal hover:text-primary transition-colors"
-                    href="#">Beranda</a>
-                <span class="text-[#cbbc90] text-sm font-medium leading-normal">/</span>
-                <a class="text-[#cbbc90] text-sm font-medium leading-normal hover:text-primary transition-colors"
-                    href="#">Semesta</a>
-                <span class="text-[#cbbc90] text-sm font-medium leading-normal">/</span>
-                <span class="text-white text-sm font-medium leading-normal">Patrion: Chronicles</span>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16">
-                <div class="col-span-1 lg:col-span-5 flex flex-col gap-4">
-                    <div
-                        class="relative w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-[#493f22] group">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                            data-alt="Epic fantasy warrior standing on a cliff edge looking at a glowing city"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVqsdGFuTSMlRjuPnTqhVgUAYjD2pdm2ms0bHX_u4Nug26AcXzyKcEEoy9KcEbb5z_zYjetoodmF1_GbUlPMA-S32bF3QMvFIcDFOJ2yx_VOYheZqjIEmnaP-OZVMfT-oEHHogQnBkX1yecjPkQAn3bZi1uIU7dAHgSYtjZaAOtGp9TNtVsF6wF0AemmJmVFwlc3FxUgzU7fs8g8b3eCoTxENa1-PQKEkEosktkwjLul-sGL7k210xo11W_TfdK7j4qweNKQTXUe0");'>
+        <div
+            class="absolute top-[40%] left-0 w-[600px] h-[600px] bg-secondary-red/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/3">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-8 space-y-20">
+                    <section class="scroll-mt-32 transition-opacity duration-1000 ease-out" id="trailer">
+                        <div class="heading-decoration">
+                            <div class="heading-icon">
+                                <div class="w-2 h-2 bg-primary transform -rotate-45"></div>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Official
+                                Trailer</h3>
+                            <div class="flex-grow h-px bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-[#231e10] via-transparent to-transparent opacity-60">
-                        </div>
-                        <div
-                            class="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-[#493f22] rounded-lg px-3 py-1 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-sm">verified</span>
-                            <span class="text-xs font-bold text-white uppercase tracking-wider">Official Release</span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div
-                            class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center hover:border-primary/50 transition-colors">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">group</span>
-                            <p class="text-xs text-[#cbbc90]">Pemain</p>
-                            <p class="text-white font-bold text-sm">2.4M</p>
-                        </div>
-                        <div
-                            class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center hover:border-primary/50 transition-colors">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">star</span>
-                            <p class="text-xs text-[#cbbc90]">Rating</p>
-                            <p class="text-white font-bold text-sm">4.9/5</p>
-                        </div>
-                        <div
-                            class="bg-[#2d2616] p-3 rounded-lg border border-[#493f22] text-center hover:border-primary/50 transition-colors">
-                            <span class="material-symbols-outlined text-[#cbbc90] mb-1">swords</span>
-                            <p class="text-xs text-[#cbbc90]">Difficulty</p>
-                            <p class="text-white font-bold text-sm">Hardcore</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-1 lg:col-span-7 flex flex-col h-full">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span
-                                class="bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">RPG</span>
-                            <span
-                                class="bg-white/10 text-white border border-white/20 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">Adventure</span>
-                        </div>
-                        <h1
-                            class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-2 tracking-tight text-shadow">
-                            PATRION: <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#cbbc90]">CHRONICLES</span>
-                        </h1>
-                        <p class="text-[#cbbc90] text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-                            Forged in starlight, destined for glory. Embark on the journey that started it all.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">devices</span>
-                            <span class="text-xs font-medium text-gray-300">PC &amp; Mobile</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">public</span>
-                            <span class="text-xs font-medium text-gray-300">Open World</span>
-                        </div>
-                        <div
-                            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#362f1e] border border-[#493f22]">
-                            <span class="material-symbols-outlined text-primary text-[18px]">cloud_sync</span>
-                            <span class="text-xs font-medium text-gray-300">Cross-Save</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-4 mb-10 pb-10 border-b border-[#493f22]">
-                        <button
-                            class="flex-1 sm:flex-none min-w-[180px] h-12 bg-primary hover:bg-[#ffcf3d] text-[#231e10] font-bold rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.5)] transform hover:-translate-y-0.5">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                            Mainkan Sekarang
-                        </button>
-                        <a class="flex-1 sm:flex-none min-w-[160px] h-12 bg-transparent border border-[#cbbc90] text-[#cbbc90] hover:text-white hover:border-white hover:bg-white/5 font-bold rounded-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
-                            href="#trailer">
-                            <span class="material-symbols-outlined">movie</span>
-                            Tonton Trailer
-                        </a>
-                        <div class="relative share-btn">
-                            <button
-                                class="size-12 rounded-lg border border-[#493f22] bg-[#2d2616] text-[#cbbc90] flex items-center justify-center hover:text-white hover:border-white transition-colors ml-auto sm:ml-0 group peer">
-                                <span class="material-symbols-outlined">share</span>
-                            </button>
+                            class="relative w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] group transform transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_60px_rgba(244,192,37,0.15)]">
                             <div
-                                class="absolute top-14 right-0 sm:left-0 z-50 min-w-[180px] bg-[#2d2616] border border-[#493f22] rounded-lg shadow-xl p-3 share-tooltip">
-                                <p
-                                    class="text-xs text-[#cbbc90] mb-2 font-bold uppercase tracking-wider text-center border-b border-[#493f22] pb-2">
-                                    Bagikan ke</p>
-                                <div class="flex justify-center gap-2">
-                                    <a class="flex items-center justify-center size-8 rounded bg-[#1877F2] text-white hover:opacity-90 transition-opacity"
-                                        href="#" title="Facebook">
-                                        <span class="font-bold text-xs">FB</span>
-                                    </a>
-                                    <a class="flex items-center justify-center size-8 rounded bg-[#1DA1F2] text-white hover:opacity-90 transition-opacity"
-                                        href="#" title="Twitter">
-                                        <span class="font-bold text-xs">X</span>
-                                    </a>
-                                    <a class="flex items-center justify-center size-8 rounded bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:opacity-90 transition-opacity"
-                                        href="#" title="Instagram">
-                                        <span class="font-bold text-xs">IG</span>
-                                    </a>
-                                    <button
-                                        class="flex items-center justify-center size-8 rounded bg-[#493f22] text-[#cbbc90] hover:bg-[#cbbc90] hover:text-[#231e10] transition-colors"
-                                        title="Copy Link">
-                                        <span class="material-symbols-outlined text-sm">link</span>
-                                    </button>
-                                </div>
+                                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-10 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 relative min-h-[400px]">
-                        <input checked="" class="hidden" id="tab-ringkasan" name="tabs" type="radio" />
-                        <input class="hidden" id="tab-cerita" name="tabs" type="radio" />
-                        <input class="hidden" id="tab-hadiah" name="tabs" type="radio" />
-                        <div class="tabs-nav flex gap-8 border-b border-[#493f22] mb-6">
-                            <label
-                                class="cursor-pointer pb-3 text-[#8a8166] hover:text-[#cbbc90] font-medium text-sm tracking-wide transition-all border-b-2 border-transparent"
-                                for="tab-ringkasan">
-                                RINGKASAN
-                            </label>
-                            <label
-                                class="cursor-pointer pb-3 text-[#8a8166] hover:text-[#cbbc90] font-medium text-sm tracking-wide transition-all border-b-2 border-transparent"
-                                for="tab-cerita">
-                                CERITA
-                            </label>
-                            <label
-                                class="cursor-pointer pb-3 text-[#8a8166] hover:text-[#cbbc90] font-medium text-sm tracking-wide transition-all border-b-2 border-transparent"
-                                for="tab-hadiah">
-                                HADIAH
-                            </label>
-                        </div>
-                        <div
-                            class="content-ringkasan tab-content space-y-6 text-[#cbbc90] leading-7 font-light text-sm md:text-base">
-                            <p>
-                                <strong class="text-white font-bold block mb-2 text-lg">Experience the legendary
-                                    journey.</strong>
-                                Masuki dunia Teyvat yang luas dan penuh kehidupan. Jelajahi tujuh bangsa, temui beragam
-                                karakter dengan kemampuan unik, dan ungkap misteri yang menyelimuti dunia ini. Patrion
-                                Chronicles membawa elemen RPG klasik dengan sentuhan modern action combat yang fluid.
-                            </p>
-                            <p>
-                                Sistem pertarungan elemen yang mendalam memungkinkan pemain untuk menggabungkan kekuatan
-                                alam—Api, Air, Es, Petir, dan lainnya—untuk menciptakan reaksi berantai yang
-                                menghancurkan.
-                            </p>
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Peta dunia terbuka tanpa batas loading screen.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Co-op multiplayer hingga 4 pemain.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Update konten berkala setiap 6 minggu.</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
-                                    <span>Musik orkestra live yang memukau.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="content-cerita tab-content space-y-8">
-                            <div class="relative rounded-lg overflow-hidden border border-[#493f22] bg-[#1a160c] p-6">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-primary">auto_stories</span>
-                                    Prolog: The Outlander Who Caught the Wind
-                                </h3>
-                                <div
-                                    class="float-right ml-6 mb-4 w-1/3 aspect-[3/4] relative hidden md:block rounded-md overflow-hidden border border-[#493f22]">
-                                    <div class="absolute inset-0 bg-cover bg-center"
-                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAa5pBL0epVWBqHzDcvoeWXZeI5Jtaom2Eyc_-_vgFDDhcnkxcsJcxt7_2AAqS8uAMHiUMwGnGy5VUpzYz1pIqa4YCP3lIFqc16C8Zm1eS4oxs-YuZ3Dwqpa4tW_Dxs4-RBlvH0uXHsdl4o2uvXAc6eYBy2JfePgw6uzt0a85qK75LwnWm_nCCGWTkU6SO7BSihWPUI8hfgZNvw-7Mtz7M6RBeLhmgh-79pcPF7eQQfE6U_3xrp9-942RAeRFZ2t_mlYJ4T3Or-E4k");'>
-                                    </div>
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                                </div>
-                                <p class="text-[#cbbc90] leading-relaxed mb-4 text-sm md:text-base">
-                                    Anda adalah seorang pengembara dari dunia lain yang terdampar di Teyvat. Terpisah
-                                    dari saudara Anda oleh dewa tak dikenal, dilucuti dari kekuatan Anda, dan tertidur
-                                    lelap, Anda sekarang terbangun di dunia yang sangat berbeda dari saat Anda pertama
-                                    kali tiba.
-                                </p>
-                                <p class="text-[#cbbc90] leading-relaxed mb-4 text-sm md:text-base">
-                                    Maka dimulailah perjalanan Anda melintasi Teyvat untuk mencari jawaban dari <span
-                                        class="text-primary font-bold">The Seven</span>—dewa-dewa setiap elemen. Di
-                                    sepanjang jalan, bersiaplah untuk menjelajahi setiap jengkal dunia yang menakjubkan
-                                    ini.
-                                </p>
-                                <div class="bg-[#2d2616] p-4 rounded border border-[#493f22] mt-4 clear-both">
-                                    <h4 class="text-white text-sm font-bold mb-2 uppercase tracking-wide">Faksi Utama
-                                    </h4>
-                                    <div class="flex flex-wrap gap-3">
-                                        <span class="px-3 py-1 bg-[#493f22] text-[#cbbc90] rounded text-xs">Knights of
-                                            Favonius</span>
-                                        <span class="px-3 py-1 bg-[#493f22] text-[#cbbc90] rounded text-xs">Liyue
-                                            Qixing</span>
-                                        <span class="px-3 py-1 bg-[#493f22] text-[#cbbc90] rounded text-xs">Fatui
-                                            Harbingers</span>
-                                        <span class="px-3 py-1 bg-[#493f22] text-[#cbbc90] rounded text-xs">Abyss
-                                            Order</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div
-                                    class="bg-[#2d2616] p-4 rounded border border-[#493f22] hover:border-primary/50 transition-colors">
-                                    <h4 class="text-primary font-bold mb-1">Archon War</h4>
-                                    <p class="text-xs text-[#cbbc90]">Perang kuno yang membentuk topografi Teyvat ribuan
-                                        tahun lalu.</p>
-                                </div>
-                                <div
-                                    class="bg-[#2d2616] p-4 rounded border border-[#493f22] hover:border-primary/50 transition-colors">
-                                    <h4 class="text-primary font-bold mb-1">Celestia</h4>
-                                    <p class="text-xs text-[#cbbc90]">Pulau misterius yang melayang di langit, rumah
-                                        para dewa.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-hadiah tab-content space-y-6">
                             <div
-                                class="bg-gradient-to-r from-[#2d2616] to-[#1a160c] border border-[#493f22] rounded-xl p-6 relative overflow-hidden">
-                                <div
-                                    class="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none">
-                                </div>
-                                <div class="flex items-start justify-between mb-6 relative z-10">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-white mb-1">Hadiah Pendaftaran Baru</h3>
-                                        <p class="text-[#cbbc90] text-sm">Mulai petualanganmu dengan bekal eksklusif.
-                                        </p>
-                                    </div>
-                                    <span
-                                        class="bg-primary text-[#231e10] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Limited
-                                        Time</span>
-                                </div>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
-                                    <div class="flex flex-col items-center gap-2 group">
-                                        <div
-                                            class="w-16 h-16 bg-[#362f1e] rounded-lg border border-[#493f22] flex items-center justify-center relative overflow-hidden group-hover:border-primary transition-colors shadow-lg">
-                                            <div
-                                                class="absolute inset-0 bg-[url('https://api.iconify.design/game-icons:crystal-growth.svg?color=%23f4c025')] bg-cover opacity-20 group-hover:opacity-40 transition-opacity">
-                                            </div>
-                                            <span
-                                                class="material-symbols-outlined text-3xl text-primary drop-shadow-lg">diamond</span>
-                                            <div
-                                                class="absolute bottom-0 right-0 bg-[#231e10] px-1 text-[10px] text-white font-bold border-tl-lg">
-                                                x1600</div>
-                                        </div>
-                                        <span
-                                            class="text-xs text-center text-[#cbbc90] font-medium group-hover:text-white">Primogems</span>
-                                    </div>
-                                    <div class="flex flex-col items-center gap-2 group">
-                                        <div
-                                            class="w-16 h-16 bg-[#362f1e] rounded-lg border border-[#493f22] flex items-center justify-center relative overflow-hidden group-hover:border-primary transition-colors shadow-lg">
-                                            <span
-                                                class="material-symbols-outlined text-3xl text-blue-400 drop-shadow-lg">local_mall</span>
-                                            <div
-                                                class="absolute bottom-0 right-0 bg-[#231e10] px-1 text-[10px] text-white font-bold border-tl-lg">
-                                                x10</div>
-                                        </div>
-                                        <span
-                                            class="text-xs text-center text-[#cbbc90] font-medium group-hover:text-white">Fated
-                                            Encounter</span>
-                                    </div>
-                                    <div class="flex flex-col items-center gap-2 group">
-                                        <div
-                                            class="w-16 h-16 bg-[#362f1e] rounded-lg border border-[#493f22] flex items-center justify-center relative overflow-hidden group-hover:border-primary transition-colors shadow-lg">
-                                            <span
-                                                class="material-symbols-outlined text-3xl text-purple-400 drop-shadow-lg">swords</span>
-                                            <div
-                                                class="absolute bottom-0 right-0 bg-[#231e10] px-1 text-[10px] text-white font-bold border-tl-lg">
-                                                4★</div>
-                                        </div>
-                                        <span
-                                            class="text-xs text-center text-[#cbbc90] font-medium group-hover:text-white">Prototype
-                                            Rancour</span>
-                                    </div>
-                                    <div class="flex flex-col items-center gap-2 group">
-                                        <div
-                                            class="w-16 h-16 bg-[#362f1e] rounded-lg border border-[#493f22] flex items-center justify-center relative overflow-hidden group-hover:border-primary transition-colors shadow-lg">
-                                            <span
-                                                class="material-symbols-outlined text-3xl text-yellow-600 drop-shadow-lg">monetization_on</span>
-                                            <div
-                                                class="absolute bottom-0 right-0 bg-[#231e10] px-1 text-[10px] text-white font-bold border-tl-lg">
-                                                50k</div>
-                                        </div>
-                                        <span
-                                            class="text-xs text-center text-[#cbbc90] font-medium group-hover:text-white">Mora
-                                            Coins</span>
-                                    </div>
-                                </div>
-                                <div class="mt-6 pt-4 border-t border-[#493f22] flex justify-between items-center">
-                                    <span class="text-xs text-[#8a8166]">Berlaku hingga 31 Des 2024</span>
-                                    <button
-                                        class="text-primary hover:text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1 transition-colors">
-                                        Klaim Sekarang <span
-                                            class="material-symbols-outlined text-sm">arrow_forward</span>
-                                    </button>
-                                </div>
+                                class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-10 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
-                            <div class="bg-[#2d2616]/50 p-4 rounded border border-[#493f22] flex items-start gap-4">
-                                <span class="material-symbols-outlined text-primary mt-1">info</span>
-                                <div>
-                                    <h4 class="text-white text-sm font-bold mb-1">Cara Mengambil Hadiah</h4>
-                                    <p class="text-xs text-[#cbbc90] leading-relaxed">
-                                        Hadiah akan dikirimkan melalui kotak surat dalam game (in-game mail) setelah
-                                        Anda mencapai Adventure Rank 10. Pastikan untuk login menggunakan akun Patrion
-                                        ID yang sama.
+                            <iframe
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen="" class="w-full h-full relative z-0" frameborder="0"
+                                src="https://www.youtube.com/embed/LqdfO7-fQ2Q"
+                                title="Rune Quest Official Trailer"></iframe>
+                            <div
+                                class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/30 rounded-tl-lg pointer-events-none transition-all duration-300 group-hover:w-20 group-hover:h-20 group-hover:border-primary/80">
+                            </div>
+                            <div
+                                class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-primary/30 rounded-tr-lg pointer-events-none transition-all duration-300 group-hover:w-20 group-hover:h-20 group-hover:border-primary/80">
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-primary/30 rounded-bl-lg pointer-events-none transition-all duration-300 group-hover:w-20 group-hover:h-20 group-hover:border-primary/80">
+                            </div>
+                            <div
+                                class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/30 rounded-br-lg pointer-events-none transition-all duration-300 group-hover:w-20 group-hover:h-20 group-hover:border-primary/80">
+                            </div>
+                        </div>
+                    </section>
+                    <section class="transition-all duration-700 ease-in-out">
+                        <div class="heading-decoration">
+                            <div class="heading-icon">
+                                <div class="w-2 h-2 bg-primary transform -rotate-45"></div>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Story
+                                Synopsis</h3>
+                            <div class="flex-grow h-px bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="relative flex-1">
+                                <div
+                                    class="dialogue-box p-8 rounded-r-lg mb-6 backdrop-blur-sm transition-transform duration-300 hover:translate-x-2 hover:bg-black/80">
+                                    <p
+                                        class="text-primary font-display font-bold text-sm mb-2 uppercase tracking-widest opacity-80">
+                                        Prologue: The Shattering</p>
+                                    <p class="text-xl text-gray-200 leading-relaxed italic font-light">
+                                        "Following the Great Shattering, the realms of Aethelgard have fallen into a
+                                        fragile peace. Yet, in the shadows of the royal courts, a new darkness stirs..."
+                                    </p>
+                                </div>
+                                <div
+                                    class="prose prose-invert prose-lg max-w-none text-gray-400 leading-relaxed space-y-6 pl-4 border-l border-white/5 transition-colors duration-300 hover:border-primary/30 hover:text-gray-300">
+                                    <p>
+                                        You play as a young diplomat thrust into the center of a conspiracy that
+                                        threatens to tear the world apart once more. Your weapon is not a sword, but
+                                        your words and your heart.
+                                    </p>
+                                    <p>
+                                        Navigate complex social webs, uncover hidden truths, and forge unbreakable bonds
+                                        with a cast of diverse characters. Will you pursue the path of duty, or follow
+                                        the call of forbidden love? In <strong class="text-white">Aethelgard
+                                            Chronicles</strong>, every conversation is a battlefield, and every choice
+                                        leaves a scar.
                                     </p>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <div class="heading-decoration">
+                            <div class="heading-icon">
+                                <div class="w-2 h-2 bg-primary transform -rotate-45"></div>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Key Features
+                            </h3>
+                            <div class="flex-grow h-px bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div
+                                class="group rpg-card p-6 rounded hover:translate-y-[-8px] transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <div class="corner-accent corner-tl"></div>
+                                <div class="corner-accent corner-tr"></div>
+                                <div class="corner-accent corner-bl"></div>
+                                <div class="corner-accent corner-br"></div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-surface-lighter border border-white/10 flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500 mt-2">
+                                        <div
+                                            class="transform -rotate-45 group-hover:-rotate-[225deg] transition-transform duration-500">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-2xl">auto_stories</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                            Deep Narrative</h4>
+                                        <p
+                                            class="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                            Experience over 50 hours of rich storytelling with multiple branching paths
+                                            and unexpected plot twists.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="group rpg-card p-6 rounded hover:translate-y-[-8px] transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <div class="corner-accent corner-tl"></div>
+                                <div class="corner-accent corner-tr"></div>
+                                <div class="corner-accent corner-bl"></div>
+                                <div class="corner-accent corner-br"></div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-surface-lighter border border-white/10 flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] group-hover:border-secondary-red/50 group-hover:bg-secondary-red/10 transition-all duration-500 mt-2">
+                                        <div
+                                            class="transform -rotate-45 group-hover:-rotate-[225deg] transition-transform duration-500">
+                                            <span
+                                                class="material-symbols-outlined text-secondary-red text-2xl">favorite</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-lg font-bold text-white mb-2 group-hover:text-secondary-red transition-colors">
+                                            Character Bonds</h4>
+                                        <p
+                                            class="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                            Build relationships with 10 romanceable characters. Uncover their
+                                            backstories and unlock exclusive CG scenes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="group rpg-card p-6 rounded hover:translate-y-[-8px] transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <div class="corner-accent corner-tl"></div>
+                                <div class="corner-accent corner-tr"></div>
+                                <div class="corner-accent corner-bl"></div>
+                                <div class="corner-accent corner-br"></div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-surface-lighter border border-white/10 flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500 mt-2">
+                                        <div
+                                            class="transform -rotate-45 group-hover:-rotate-[225deg] transition-transform duration-500">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-2xl">call_split</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                            Impactful Choices</h4>
+                                        <p
+                                            class="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                            Your decisions matter. From minor dialogues to major turning points, your
+                                            choices determine one of 12 unique endings.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="group rpg-card p-6 rounded hover:translate-y-[-8px] transition-all duration-500 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                                <div class="corner-accent corner-tl"></div>
+                                <div class="corner-accent corner-tr"></div>
+                                <div class="corner-accent corner-bl"></div>
+                                <div class="corner-accent corner-br"></div>
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="flex-shrink-0 w-12 h-12 bg-surface-lighter border border-white/10 flex items-center justify-center transform rotate-45 group-hover:rotate-[225deg] group-hover:border-secondary-red/50 group-hover:bg-secondary-red/10 transition-all duration-500 mt-2">
+                                        <div
+                                            class="transform -rotate-45 group-hover:-rotate-[225deg] transition-transform duration-500">
+                                            <span
+                                                class="material-symbols-outlined text-secondary-red text-2xl">mic</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-lg font-bold text-white mb-2 group-hover:text-secondary-red transition-colors">
+                                            Fully Voiced</h4>
+                                        <p
+                                            class="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                            Immerse yourself completely with a star-studded voice cast bringing every
+                                            emotional moment to life.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="heading-decoration">
+                            <div class="heading-icon">
+                                <div class="w-2 h-2 bg-primary transform -rotate-45"></div>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Gallery</h3>
+                            <div class="flex-grow h-px bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[500px]">
+                            <div
+                                class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded border border-white/10 cursor-pointer shadow-lg hover-gold-glow transition-all duration-500 ease-out">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] group-hover:scale-110 ease-out"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-60">
+                                </div>
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-black/50 backdrop-blur border border-white/30 flex items-center justify-center shadow-[0_0_20px_rgba(244,192,37,0.4)]">
+                                        <span class="material-symbols-outlined text-white text-3xl">zoom_in</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                    <div class="w-10 h-1 bg-primary mb-3 transition-all duration-500 group-hover:w-20">
+                                    </div>
+                                    <p class="text-white font-display font-bold text-xl drop-shadow-md">The Royal
+                                        Gardens of Zephyr</p>
+                                    <p class="text-gray-400 text-sm mt-1 group-hover:text-white transition-colors">
+                                        Background Art</p>
+                                </div>
+                            </div>
+                            <div
+                                class="relative group overflow-hidden rounded border border-white/10 cursor-pointer shadow-lg hover-gold-glow transition-all duration-500 h-60 md:h-auto">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0'); filter: contrast(1.1);">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent opacity-80 group-hover:opacity-60 transition-opacity">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 p-4 w-full transform transition-transform duration-500 group-hover:-translate-y-1">
+                                    <p class="text-white font-bold drop-shadow-md">Interactive Dialogue System</p>
+                                </div>
+                            </div>
+                            <div
+                                class="relative group overflow-hidden rounded border border-white/10 cursor-pointer shadow-lg hover-gold-glow transition-all duration-500 h-60 md:h-auto">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k'); opacity: 0.9;">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent opacity-80 group-hover:opacity-60 transition-opacity">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 p-4 w-full transform transition-transform duration-500 group-hover:-translate-y-1">
+                                    <p class="text-white font-bold drop-shadow-md">Event CG: The Ancient Promise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="heading-decoration">
+                            <div class="heading-icon">
+                                <div class="w-2 h-2 bg-primary transform -rotate-45"></div>
+                            </div>
+                            <h3 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Technical
+                                Specs</h3>
+                            <div class="flex-grow h-px bg-gradient-to-r from-white/20 to-transparent ml-4"></div>
+                        </div>
+                        <div
+                            class="bg-surface-dark border border-white/5 rounded p-1 relative overflow-hidden transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                            <div
+                                class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none transform transition-transform duration-700 hover:scale-110 hover:rotate-12">
+                                <span class="material-symbols-outlined text-6xl text-primary">memory</span>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur rounded p-6 md:p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div class="space-y-6">
+                                        <div class="flex items-center gap-3 text-primary border-b border-white/10 pb-4">
+                                            <span class="material-symbols-outlined">settings_suggest</span>
+                                            <h4 class="font-bold text-lg uppercase tracking-wider">Minimum</h4>
+                                        </div>
+                                        <ul class="space-y-4 text-sm font-mono">
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-primary transition-colors">OS</span>
+                                                <span class="col-span-2 text-gray-300">Windows 10 64-bit</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-primary transition-colors">CPU</span>
+                                                <span class="col-span-2 text-gray-300">Intel Core i3-4130</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-primary transition-colors">RAM</span>
+                                                <span class="col-span-2 text-gray-300">4 GB</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-primary transition-colors">GPU</span>
+                                                <span class="col-span-2 text-gray-300">GTX 660</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-primary transition-colors">HDD</span>
+                                                <span class="col-span-2 text-gray-300">15 GB Space</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="space-y-6 md:border-l md:border-white/5 md:pl-8">
+                                        <div
+                                            class="flex items-center gap-3 text-secondary-red border-b border-white/10 pb-4">
+                                            <span class="material-symbols-outlined">rocket_launch</span>
+                                            <h4 class="font-bold text-lg uppercase tracking-wider">Recommended</h4>
+                                        </div>
+                                        <ul class="space-y-4 text-sm font-mono">
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-secondary-red transition-colors">OS</span>
+                                                <span class="col-span-2 text-white">Windows 10 / 11</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-secondary-red transition-colors">CPU</span>
+                                                <span class="col-span-2 text-white">Intel Core i5-8400</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-secondary-red transition-colors">RAM</span>
+                                                <span class="col-span-2 text-white">8 GB</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-secondary-red transition-colors">GPU</span>
+                                                <span class="col-span-2 text-white">GTX 1060 6GB</span>
+                                            </li>
+                                            <li
+                                                class="grid grid-cols-3 gap-2 group hover:bg-white/5 p-1 rounded transition-colors">
+                                                <span
+                                                    class="text-gray-500 group-hover:text-secondary-red transition-colors">HDD</span>
+                                                <span class="col-span-2 text-white">15 GB SSD</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="lg:col-span-4 space-y-8">
+                    <div
+                        class="sticky top-24 glass-panel rounded border border-white/10 p-1 animate-[fadeIn_0.5s_ease-out_0.2s] transition-all duration-300 hover:border-white/20">
+                        <div class="bg-surface-dark/80 p-6 rounded relative overflow-hidden">
+                            <div
+                                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-white to-primary opacity-50">
+                            </div>
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary/5 blur-[50px] rounded-full pointer-events-none animate-pulse">
+                            </div>
+                            <div class="flex items-center gap-4 mb-6 relative z-10">
+                                <div
+                                    class="w-20 h-20 rounded overflow-hidden border-2 border-primary/50 shadow-[0_0_15px_rgba(244,192,37,0.2)] group cursor-pointer">
+                                    <div class="w-full h-full bg-cover bg-center transform transition-transform duration-700 group-hover:scale-110"
+                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZe-mB130j7k5gjBRSCGmMu1b7_J2OR8022OEU6a-qx4s2ysVLw_BW7IdlOi9aa9Pw66hnzGlDdHHnhJXTjTTcOEYSE3p7mHGnBXsnykYHbFi3rpdEwuU4dFOVXxqGpwAoyF3zif235OPqe4fRiuPSgOqgJidqYwu0z6iLE6T_dT02lR4QTPH0NSldlw1g5Gu07cbfMKBu4270aKQjROL72_TQ3_S8H4GN-gBI4Io24RU0Wt_hnP2pj7gYojyePFp51S2mWGNIuo');">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-display font-bold text-xl text-white leading-tight">Aethelgard</h4>
+                                    <p class="text-primary text-sm font-bold uppercase tracking-wider">Chronicles</p>
+                                    <div class="flex text-primary text-xs mt-1">
+                                        <span class="material-symbols-outlined text-sm filled"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-sm filled"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-sm filled"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-sm filled"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="material-symbols-outlined text-sm filled"
+                                            style="font-variation-settings: 'FILL' 1;">star_half</span>
+                                        <span class="ml-2 text-gray-400">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4 mb-8 relative z-10">
+                                <div
+                                    class="flex justify-between items-center text-xs border-b border-white/5 pb-2 transition-colors hover:border-white/20">
+                                    <span class="text-gray-400 uppercase tracking-wide">Developer</span>
+                                    <span class="text-white font-medium">Patrion Studio</span>
+                                </div>
+                                <div
+                                    class="flex justify-between items-center text-xs border-b border-white/5 pb-2 transition-colors hover:border-white/20">
+                                    <span class="text-gray-400 uppercase tracking-wide">Genre</span>
+                                    <span class="text-white font-medium">Visual Novel</span>
+                                </div>
+                                <div
+                                    class="flex justify-between items-center text-xs border-b border-white/5 pb-2 transition-colors hover:border-white/20">
+                                    <span class="text-gray-400 uppercase tracking-wide">Release</span>
+                                    <span class="text-white font-medium">Dec 15, 2023</span>
+                                </div>
+                                <div
+                                    class="flex justify-between items-center text-xs border-b border-white/5 pb-2 transition-colors hover:border-white/20">
+                                    <span class="text-gray-400 uppercase tracking-wide">Platform</span>
+                                    <div class="flex gap-2 text-gray-300">
+                                        <span
+                                            class="material-symbols-outlined text-sm transition-colors hover:text-white">desktop_windows</span>
+                                        <span
+                                            class="material-symbols-outlined text-sm transition-colors hover:text-white">phone_iphone</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full relative overflow-hidden bg-primary hover:bg-primary-light text-background-dark font-display font-bold py-3.5 px-6 rounded shadow-[0_0_15px_rgba(244,192,37,0.3)] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 mb-3 group active:scale-95">
+                                <span class="relative z-10 flex items-center gap-2">
+                                    <span class="material-symbols-outlined filled">play_arrow</span>
+                                    MAINKAN
+                                </span>
+                                <div
+                                    class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                </div>
+                            </button>
+                            <button
+                                class="w-full bg-surface-lighter hover:bg-surface-lighter/80 text-white text-sm font-bold py-3 px-6 rounded border border-white/10 transition-all duration-300 flex items-center justify-center gap-2 group hover:border-secondary-red/50">
+                                <span
+                                    class="material-symbols-outlined text-secondary-red group-hover:animate-bounce">redeem</span>
+                                <span>Claim Bonus Chapter</span>
+                            </button>
+                            <div class="flex justify-center gap-4 mt-6 pt-6 border-t border-white/10">
+                                <a class="text-gray-500 hover:text-white transition-all duration-300 hover:scale-110"
+                                    href="#"><span class="material-symbols-outlined">public</span></a>
+                                <a class="text-gray-500 hover:text-white transition-all duration-300 hover:scale-110"
+                                    href="#"><span class="material-symbols-outlined">forum</span></a>
+                                <a class="text-gray-500 hover:text-white transition-all duration-300 hover:scale-110"
+                                    href="#"><span class="material-symbols-outlined">share</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="glass-panel rounded border border-white/10 p-6 transition-all duration-300 hover:border-white/20">
+                        <h5 class="text-white font-bold mb-4 flex items-center gap-2 uppercase text-sm tracking-wider">
+                            <span class="material-symbols-outlined text-primary text-lg animate-pulse">newspaper</span>
+                            Latest Updates
+                        </h5>
+                        <ul class="space-y-4">
+                            <li
+                                class="group cursor-pointer p-2 -mx-2 rounded hover:bg-white/5 transition-colors duration-300">
+                                <span class="text-xs text-primary mb-1 block font-bold">Feb 14, 2024</span>
+                                <p
+                                    class="text-sm text-gray-300 group-hover:text-white transition-colors pl-2 border-l-2 border-transparent group-hover:border-primary">
+                                    Valentine's Day Event: "Sweet Whispers" DLC now available!</p>
+                            </li>
+                            <li
+                                class="border-t border-white/5 pt-4 group cursor-pointer p-2 -mx-2 rounded hover:bg-white/5 transition-colors duration-300">
+                                <span class="text-xs text-gray-500 mb-1 block font-bold">Jan 20, 2024</span>
+                                <p
+                                    class="text-sm text-gray-300 group-hover:text-white transition-colors pl-2 border-l-2 border-transparent group-hover:border-white/50">
+                                    Patch 1.2 Notes: New character route added for Prince Kael.</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mb-16 scroll-mt-24 max-w-[1200px] mx-auto w-full px-4 md:px-8" id="trailer">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
-                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="w-1 h-8 bg-primary rounded-full box-shadow-[0_0_10px_#f4c025]"></span>
-                    Trailer Resmi: "Echoes of Eternity"
-                </h3>
-                <div
-                    class="flex gap-4 items-center bg-[#2d2616] border border-[#493f22] px-4 py-2 rounded-full shadow-lg">
-                    <span class="text-[#cbbc90] text-sm font-bold uppercase tracking-wider">Bagikan:</span>
-                    <div class="flex gap-3">
-                        <a class="flex items-center justify-center w-8 h-8 rounded-full bg-[#1877F2] text-white hover:scale-110 transition-transform shadow-md"
-                            href="#" title="Bagikan ke Facebook">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white hover:scale-110 transition-transform shadow-md border border-gray-700"
-                            href="#" title="Bagikan ke X">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:scale-110 transition-transform shadow-md"
-                            href="#" title="Bagikan ke Instagram">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                                </path>
-                            </svg>
-                        </a>
-                        <button
-                            class="flex items-center justify-center w-8 h-8 rounded-full bg-[#493f22] text-[#cbbc90] hover:text-white hover:bg-primary hover:text-black transition-colors shadow-md"
-                            title="Salin Tautan">
-                            <span class="material-symbols-outlined text-lg">link</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <section class="py-16 relative overflow-hidden border-t border-white/5 bg-background-dark">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
             <div
-                class="relative w-full aspect-video rounded-xl overflow-hidden border border-[#493f22] bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] group ring-1 ring-[#493f22]/50 hover:ring-primary/50 transition-all">
-                <iframe
-                    class="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/tgjoDjj86Fk?si=k46j-yoqIiko-Pcf&amp;controls=0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    frameborder="0"
-                    allowfullscreen
-                    title="YouTube video player"></iframe>
-            </div>
-        </div>
-        <div class="mb-20 max-w-[1200px] mx-auto w-full px-4 md:px-8">
-            <div class="flex items-center justify-between mb-8">
-                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="w-1 h-8 bg-primary rounded-full"></span>
-                    Galeri Visual &amp; Konsep
-                </h3>
-                <div class="flex gap-2">
-                    <span
-                        class="hidden md:inline-flex text-[#8a8166] text-xs items-center mr-4 uppercase tracking-widest font-bold">Scroll
-                        untuk melihat</span>
-                    <div class="flex gap-2">
-                        <button
-                            class="size-9 rounded-full border border-[#493f22] bg-[#2d2616] text-[#cbbc90] flex items-center justify-center hover:bg-primary hover:text-black hover:border-primary transition-all shadow-lg">
-                            <span class="material-symbols-outlined text-sm">arrow_back</span>
-                        </button>
-                        <button
-                            class="size-9 rounded-full border border-[#493f22] bg-[#2d2616] text-[#cbbc90] flex items-center justify-center hover:bg-primary hover:text-black hover:border-primary transition-all shadow-lg">
-                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="flex gap-4 md:gap-6 overflow-x-auto pb-8 snap-x snap-mandatory -mx-4 px-4 md:-mx-8 md:px-8 scroll-smooth"
-                style="scrollbar-width: thin;">
+                class="relative rounded-xl overflow-hidden bg-gradient-to-r from-secondary-red-dark via-surface-dark to-background-dark border border-secondary-red/30 shadow-2xl group transition-all duration-500 hover:shadow-[0_0_50px_rgba(159,18,57,0.3)]">
                 <div
-                    class="snap-center shrink-0 w-[85vw] md:w-[450px] aspect-video rounded-xl overflow-hidden border border-[#493f22] relative group cursor-pointer shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-1">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        data-alt="Screenshot of a magical forest landscape with glowing plants"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm4NxgMhp0O1r7qIeKDH53DOq34l7Olp-2-LwPqkj7xs-QpRiBJQyly5Y8cBI8u2n2LEELmYzOSkzT37AFtNpsaT-JggoWaH2eWMtnjEy4dYGpJjC8wuAZ1CIsE2SSoTZOdG3cRcnOnuo7N_DHnBD4aHkUGT-VHanMRcTJfFB8fQmtjfKuRvIgKAwZ0J4QWonMeLNixOHDdI0WvF2Jm2a7KPVTfq-mpILPpjAS_lha8vIUBIxB5w-Yha1Wymsbk4rpZarkhf61MH8");'>
-                    </div>
+                    class="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCTDE805EPRbPVFaz3UHsBDK5fNsnQ_6mO5Sf01gNSzfLQjacWLwzYOGR8QGdwIUxy95INcXRRtOFpD2Cu9MHXGrqsf17CtDXtg-TV5Q87VEBKz7W4QOQ_vJIQsHYIEIR-DweVfR9PArNkGeiBX6Aye2PLw9PgnIHY4ZC6v3dAx-wyrVVBFvkLsO42FuG6z6iWeJl6vPnlsBu1dI9vuB3KdvPT6Ea6uFke4TKBWhbqGe9aryv_g4vj0R7_m-1f3vQZg1BYxzSGb_k')] bg-cover bg-center opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-[2s] ease-out">
+                </div>
+                <div class="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-4 left-4">
-                            <p class="text-white font-bold text-lg drop-shadow-md">Hutan Bisikan</p>
-                            <p class="text-[#cbbc90] text-xs uppercase tracking-wider">In-Game Environment</p>
+                        class="text-left max-w-2xl transform transition-transform duration-500 group-hover:translate-x-2">
+                        <h3 class="text-3xl font-display font-bold text-white mb-2">Join the Community</h3>
+                        <p class="text-gray-300 text-lg">Discuss routes, share fan art, and theory-craft with thousands
+                            of other adventurers.</p>
+                    </div>
+                    <button
+                        class="bg-[#5865F2] hover:bg-[#4752c4] text-white font-display font-bold py-4 px-8 rounded shadow-lg transition-all duration-300 hover:-translate-y-1 whitespace-nowrap flex items-center gap-3 relative overflow-hidden group/btn">
+                        <span
+                            class="material-symbols-outlined text-2xl transition-transform duration-300 group-hover/btn:rotate-12">forum</span>
+                        <span class="relative z-10">JOIN DISCORD</span>
+                        <div
+                            class="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500 ease-in-out">
                         </div>
-                    </div>
-                    <div
-                        class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded px-2 py-1 border border-white/10">
-                        <span class="material-symbols-outlined text-white text-lg">fullscreen</span>
-                    </div>
-                </div>
-                <div
-                    class="snap-center shrink-0 w-[85vw] md:w-[450px] aspect-video rounded-xl overflow-hidden border border-[#493f22] relative group cursor-pointer shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-1">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        data-alt="Detailed close up of a golden sword hilt with gems"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPXmodmOc_b3RadyrRvOT8ebkJTyAkfGMzsBIN831--_JRGW3q-y1S0c05rgRiFUPrjc0aDPnqbYWm7V2J-83x3YkJ48c44jET_c4apG4TsK4klnWIcIE47s7Hu4vT-wG_NM29ZLlNpWUL59pzr0o5KTASwCE3q7rBwbgVHkKoJjyNRbIUHmUzJOJeOSGdaoJrCxoBoiDGcTzan8uePtWhHognJs-YFXOVHF9bySZDdZzyBshh4YJzQ_IXt7fGCp0-56_Krqx55VQ");'>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-4 left-4">
-                            <p class="text-white font-bold text-lg drop-shadow-md">Pedang Sang Raja</p>
-                            <p class="text-[#cbbc90] text-xs uppercase tracking-wider">Weapon Concept Art</p>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded px-2 py-1 border border-white/10">
-                        <span class="material-symbols-outlined text-white text-lg">fullscreen</span>
-                    </div>
-                </div>
-                <div
-                    class="snap-center shrink-0 w-[85vw] md:w-[450px] aspect-video rounded-xl overflow-hidden border border-[#493f22] relative group cursor-pointer shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-1">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        data-alt="Abstract mystical blue and purple energy swirl"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFH0VCxycd4Jyr7Ct65x0NSqQxEkGNE15qn56z34su3jvwoFssMZlUzn5cUrXdApCJuk9AMGS8-cIuInn2JfAuTglZWsioqzDAPK3i7V5NPvXAPnkkRC79VKAXRw6WS3dtYR0x8QaAbJqodiCh7CNzt3tBXtmj3Zo_NHMPbIYI3A0jA0OmVkWXtFh6Fw4UbdwzsvmkJPlxGtHQqXFkQ08ZOK5-V7HWa5PqgoAqiHVwLeBGUCYiEv1mjeidu8Of9KXbdAu9bLKpsQg");'>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-4 left-4">
-                            <p class="text-white font-bold text-lg drop-shadow-md">Energi Void</p>
-                            <p class="text-[#cbbc90] text-xs uppercase tracking-wider">VFX Showcase</p>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded px-2 py-1 border border-white/10">
-                        <span class="material-symbols-outlined text-white text-lg">fullscreen</span>
-                    </div>
-                </div>
-                <div
-                    class="snap-center shrink-0 w-[85vw] md:w-[450px] aspect-video rounded-xl overflow-hidden border border-[#493f22] relative group cursor-pointer shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-1">
-                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        data-alt="Character standing in front of a giant ancient stone gate"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAa5pBL0epVWBqHzDcvoeWXZeI5Jtaom2Eyc_-_vgFDDhcnkxcsJcxt7_2AAqS8uAMHiUMwGnGy5VUpzYz1pIqa4YCP3lIFqc16C8Zm1eS4oxs-YuZ3Dwqpa4tW_Dxs4-RBlvH0uXHsdl4o2uvXAc6eYBy2JfePgw6uzt0a85qK75LwnWm_nCCGWTkU6SO7BSihWPUI8hfgZNvw-7Mtz7M6RBeLhmgh-79pcPF7eQQfE6U_3xrp9-942RAeRFZ2t_mlYJ4T3Or-E4k");'>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-4 left-4">
-                            <p class="text-white font-bold text-lg drop-shadow-md">Gerbang Kuno</p>
-                            <p class="text-[#cbbc90] text-xs uppercase tracking-wider">Cinematic Still</p>
-                        </div>
-                    </div>
-                    <div
-                        class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded px-2 py-1 border border-white/10">
-                        <span class="material-symbols-outlined text-white text-lg">fullscreen</span>
-                    </div>
-                </div>
-                <div
-                    class="snap-center shrink-0 w-[200px] aspect-video rounded-xl overflow-hidden border border-[#493f22] bg-[#2d2616] group cursor-pointer hover:border-primary transition-all flex flex-col items-center justify-center gap-2">
-                    <div
-                        class="size-12 rounded-full bg-[#493f22] flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-colors">
-                        <span class="material-symbols-outlined">collections</span>
-                    </div>
-                    <span class="text-sm font-bold text-[#cbbc90] group-hover:text-white transition-colors">Lihat Semua
-                        (24)</span>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="mb-12 max-w-[1200px] mx-auto w-full px-4 md:px-8">
-            <h3 class="text-2xl font-bold text-white flex items-center gap-3 mb-8">
-                <span class="w-1 h-8 bg-red-800 rounded-full"></span>
-                Program Lain di Semesta Ini
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                    href="#">
-                    <div class="h-48 bg-cover bg-center relative" data-alt="Futuristic cyber city landscape at night"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8lHL6Jf5e6XGwDOkldd9lcvALs59wLfaN3DZA9E9Gc52hozh-W-WEZvle5zrZ9SwDXUUBLZqw8FLkbmlbXh0UxqgXZWrZShc34ov4W6U_gb4Y4GNpOYRCdLGlbHRu9Qbk2r73yxrtusQMO2bwOdwdLWfKJyf0JI4xr_yaDmizxzayxZpJiIXFh9ThSxMv-BU9dWTiiOwkNxtyNtcm2a8TJorEjg3L-OYkxw6gSS1DUJSD1r-bc9OF9MywmW3bmu8t9CeXEZzIqBg");'>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
                         <div
-                            class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-primary uppercase border border-[#493f22]">
-                            Sci-Fi</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                            Patrion: Starrail</h4>
-                        <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Perjalanan melintasi galaksi dengan kereta
-                            api astral. Temukan dunia baru.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-primary text-xs">
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star_half</span>
-                            </div>
-                            <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Update v2.1</span>
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
                         </div>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
                     </div>
-                </a>
-                <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                    href="#">
-                    <div class="h-48 bg-cover bg-center relative"
-                        data-alt="Dark moody room with red lighting and shadows"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLVFrsFbgCrUcrpugnMY0OeOOKXPfBC7XshpF0O-fAMOuHJTJZQSA8Shl2z478BLne3AcI7VCqaBILEma0tuXzMLMAEnUYh-HTIn04DxcTk5ubYnhMqHT5Ko28W3Y4JVqx7yXU-XQOhyigK3gEYfrOn-9XIDwLBIBo_FXGeFLQLhCA7PBDm4EtBJqfHRdND_iDVKo230MlaOhnupCaONZ7jDtPSWyVMLPsmDeskaF6--4xneS9CSIGouktBGRupIgSIdMHcOzd2_A");'>
-                        <div
-                            class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-red-500 uppercase border border-[#493f22]">
-                            Horror</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                            Patrion: Abyss</h4>
-                        <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Survival horror di kedalaman laut yang tak
-                            terjamah cahaya matahari.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-primary text-xs">
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px] text-[#493f22]">star</span>
-                            </div>
-                            <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Coming Soon</span>
-                        </div>
-                    </div>
-                </a>
-                <a class="group block glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-colors"
-                    href="#">
-                    <div class="h-48 bg-cover bg-center relative"
-                        data-alt="Digital grid landscape representing virtual reality"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwIfqnO13uYHR_s2k4fmPtKKhIupsE6t43FILMIW1VVnu_BYOaB1Dd4TZDwoYIBR3nljTVP15jqk5-QokxKhIjIf7Uq0y_-EcKudcM7aGho0q22MC-8fTSHpMnPZJkRwA9Vmwz6XJvst_gzMSo8e999oawX9IWlERwK-lRdCFWd_STFwbyxaKqO-bnBRPyCJyGj6D7Rag61hNXW08lpCBKSczXrfj46CFGoTAIUw6Oj7iJeSIpR6vX_SsipZWVh72NONHoUrZ1GF8");'>
-                        <div
-                            class="absolute top-3 left-3 bg-[#231e10]/90 px-2 py-1 rounded text-[10px] font-bold text-blue-400 uppercase border border-[#493f22]">
-                            Sim</div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                            Patrion: Nexus</h4>
-                        <p class="text-[#8a8166] text-sm line-clamp-2 mb-4">Bangun utopia digitalmu sendiri dalam
-                            simulasi manajemen kota tercanggih.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-primary text-xs">
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                                <span class="material-symbols-outlined text-[16px]">star</span>
-                            </div>
-                            <span class="text-xs text-white bg-[#493f22] px-2 py-1 rounded">Baru</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </main>
-    <footer class="bg-[#1a160c] border-t border-[#493f22] pt-12 pb-8">
-        <div class="max-w-[1200px] mx-auto px-4 md:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-                <div class="max-w-sm">
-                    <div class="flex items-center gap-2 text-white mb-4">
-                        <div class="size-6 text-primary">
-                            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd"
-                                    d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                                    fill="currentColor" fill-rule="evenodd"></path>
-                            </svg>
-                        </div>
-                        <h2 class="text-xl font-bold tracking-tight">PATRION</h2>
-                    </div>
-                    <p class="text-[#8a8166] text-sm leading-relaxed">
-                        Patrion adalah platform hiburan digital terdepan yang menghubungkan jutaan pemain di seluruh
-                        dunia melalui cerita epik dan gameplay yang imersif.
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
                     </p>
                 </div>
-                <div class="flex gap-16">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
                     <div>
-                        <h5 class="text-white font-bold mb-4">Perusahaan</h5>
-                        <ul class="space-y-2 text-sm text-[#8a8166]">
-                            <li><a class="hover:text-primary" href="#">Tentang Kami</a></li>
-                            <li><a class="hover:text-primary" href="#">Karir</a></li>
-                            <li><a class="hover:text-primary" href="#">Press Kit</a></li>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-4">Dukungan</h5>
-                        <ul class="space-y-2 text-sm text-[#8a8166]">
-                            <li><a class="hover:text-primary" href="#">Pusat Bantuan</a></li>
-                            <li><a class="hover:text-primary" href="#">Kebijakan Privasi</a></li>
-                            <li><a class="hover:text-primary" href="#">Syarat Layanan</a></li>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-[#2d2616] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-[#493f22] text-xs">© 2024 Patrion Universe. All rights reserved.</p>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
                 <div class="flex gap-4">
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">public</span></a>
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">chat</span></a>
-                    <a class="text-[#8a8166] hover:text-white transition-colors" href="#"><span
-                            class="material-symbols-outlined">mail</span></a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
                 </div>
             </div>
         </div>

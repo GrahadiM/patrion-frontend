@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Halaman Nonton Program PATRION</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4c025",
+                        "primary-dark": "#c69a1b",
+                        "secondary-red": "#7f1d1d",
+                        "secondary-red-dark": "#450a0a",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1a1614",
+                        "surface-dark": "#2a2420",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to bottom, rgba(26, 22, 20, 0.3), rgba(26, 22, 20, 1))',
+                        'card-gradient': 'linear-gradient(135deg, rgba(42, 36, 32, 0.9) 0%, rgba(26, 22, 20, 0.95) 100%)',
+                        'red-glow': 'radial-gradient(circle at center, rgba(127, 29, 29, 0.4) 0%, rgba(26, 22, 20, 0) 70%)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1614;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f4c025;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c69a1b;
+        }
+
+        .glass-panel {
+            background: rgba(42, 36, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 192, 37, 0.1);
+        }
+
+        .hero-glow {
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.3);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(244, 192, 37, 0.5);
+            border-radius: 2px;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-background-dark overflow-x-hidden flex flex-col min-h-screen">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary-red rounded-lg shadow-[0_0_15px_rgba(244,192,37,0.4)]">
+                        <span class="material-symbols-outlined text-background-dark text-2xl font-bold">shield</span>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-tight text-white">PATRION</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Beranda</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Karakter</a>
+                        <a class="text-primary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Semesta</a>
+                        <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                            href="#">Game</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex">
+                    <button
+                        class="relative group bg-primary hover:bg-white text-background-dark font-display font-bold py-2 px-6 rounded transition-all duration-300 overflow-hidden shadow-[0_0_20px_rgba(244,192,37,0.3)] hover:shadow-[0_0_30px_rgba(244,192,37,0.6)]">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">login</span>
+                            Login
+                        </span>
+                        <div
+                            class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary/20">
+                        </div>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="relative pt-28 pb-24 min-h-screen bg-background-dark overflow-hidden flex-grow" id="watch-page">
+        <div
+            class="absolute top-0 w-full h-[600px] bg-gradient-to-b from-[#7f1d1d]/10 to-transparent pointer-events-none">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3">
+        </div>
+        <div
+            class="absolute top-[40%] left-[-200px] w-[500px] h-[500px] bg-secondary-red/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <nav aria-label="Breadcrumb" class="flex mb-6 text-sm text-gray-400">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a class="inline-flex items-center hover:text-white transition-colors" href="#">
+                            <span class="material-symbols-outlined mr-2 text-base">home</span>
+                            Beranda
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <a class="hover:text-white transition-colors" href="#">Semesta</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <a class="hover:text-white transition-colors" href="#">The First Guardian</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-gray-600 mx-2">chevron_right</span>
+                            <span class="text-primary font-medium">Episode 1</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-8 xl:col-span-8 space-y-6">
+                    <div
+                        class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.7)] group bg-black z-20">
+                        <video class="w-full h-full object-cover" controls="" id="patrion-player"
+                            poster="https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0">
+                            <source src="https://cms.patrion.id/storage/programs/trailers/01_Live_action.mp4"
+                                type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        <div
+                            class="absolute inset-0 pointer-events-none rounded-xl border border-primary/20 shadow-[inset_0_0_30px_rgba(244,192,37,0.1)]">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 z-30 pointer-events-auto flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button
+                                class="flex items-center justify-center px-2 py-1.5 bg-surface-dark/80 backdrop-blur-md border border-white/10 hover:border-primary/50 hover:bg-surface-dark rounded-lg text-white hover:text-primary transition-all shadow-lg hover:shadow-[0_0_15px_rgba(244,192,37,0.3)]"
+                                onclick="document.getElementById('patrion-player').requestPictureInPicture()"
+                                title="Picture in Picture">
+                                <span class="material-symbols-outlined text-xl">picture_in_picture_alt</span>
+                            </button>
+                            <button
+                                class="flex items-center justify-center px-2 py-1.5 bg-surface-dark/80 backdrop-blur-md border border-white/10 hover:border-primary/50 hover:bg-surface-dark rounded-lg text-white hover:text-primary transition-all shadow-lg hover:shadow-[0_0_15px_rgba(244,192,37,0.3)]"
+                                onclick="document.getElementById('patrion-player').requestFullscreen()"
+                                title="Fullscreen">
+                                <span class="material-symbols-outlined text-xl">fullscreen</span>
+                            </button>
+                            <div class="relative">
+                                <button
+                                    class="flex items-center gap-2 px-3 py-1.5 bg-surface-dark/80 backdrop-blur-md border border-white/10 hover:border-primary/50 hover:bg-surface-dark rounded-lg text-white hover:text-primary transition-all text-xs font-bold font-display tracking-wide shadow-lg hover:shadow-[0_0_15px_rgba(244,192,37,0.3)]"
+                                    onclick="document.getElementById('quality-dropdown').classList.toggle('hidden'); document.getElementById('quality-arrow').classList.toggle('-rotate-180')">
+                                    <span class="material-symbols-outlined text-lg">settings</span>
+                                    <span class="hidden sm:inline">Quality</span>
+                                    <span class="w-px h-3 bg-white/20 mx-1"></span>
+                                    <span id="quality-label">1080p</span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-300"
+                                        id="quality-arrow">expand_more</span>
+                                </button>
+                                <div class="absolute right-0 top-full mt-2 w-48 bg-[#1a1614]/95 backdrop-blur-xl border border-primary/20 rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.5)] overflow-hidden hidden origin-top-right animate-in fade-in zoom-in-95 duration-200 z-50"
+                                    id="quality-dropdown">
+                                    <div class="py-1">
+                                        <div
+                                            class="px-4 py-2 text-[10px] text-gray-500 font-bold uppercase tracking-wider border-b border-white/5 bg-white/5 flex justify-between items-center">
+                                            <span>Select Resolution</span>
+                                            <span class="material-symbols-outlined text-xs">high_quality</span>
+                                        </div>
+                                        <button
+                                            class="w-full text-left px-4 py-2.5 text-xs font-bold text-white hover:bg-primary/20 transition-colors border-l-2 border-transparent hover:border-primary flex items-center justify-between group/item"
+                                            onclick="document.getElementById('quality-label').innerText = '1080p'; document.getElementById('quality-dropdown').classList.add('hidden'); document.getElementById('quality-arrow').classList.remove('-rotate-180')">
+                                            <span class="group-hover/item:text-primary transition-colors">1080p</span>
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="text-[9px] bg-primary text-black px-1.5 py-0.5 rounded font-bold">HD</span>
+                                            </div>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between border-l-2 border-transparent hover:border-white/20"
+                                            onclick="document.getElementById('quality-label').innerText = '720p'; document.getElementById('quality-dropdown').classList.add('hidden'); document.getElementById('quality-arrow').classList.remove('-rotate-180')">
+                                            <span>720p</span>
+                                            <span
+                                                class="text-[9px] bg-white/10 text-gray-500 px-1.5 py-0.5 rounded font-bold group-hover:text-white group-hover:bg-white/20 transition-colors">HD</span>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between border-l-2 border-transparent hover:border-white/20"
+                                            onclick="document.getElementById('quality-label').innerText = '480p'; document.getElementById('quality-dropdown').classList.add('hidden'); document.getElementById('quality-arrow').classList.remove('-rotate-180')">
+                                            <span>480p</span>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between border-l-2 border-transparent hover:border-white/20"
+                                            onclick="document.getElementById('quality-label').innerText = '360p'; document.getElementById('quality-dropdown').classList.add('hidden'); document.getElementById('quality-arrow').classList.remove('-rotate-180')">
+                                            <span>360p</span>
+                                        </button>
+                                        <button
+                                            class="w-full text-left px-4 py-2.5 text-xs font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-between border-t border-white/5"
+                                            onclick="document.getElementById('quality-label').innerText = 'Auto'; document.getElementById('quality-dropdown').classList.add('hidden'); document.getElementById('quality-arrow').classList.remove('-rotate-180')">
+                                            <span>Auto</span>
+                                            <span class="text-[10px] text-gray-600">Auto</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 border-b border-white/5 pb-6">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span
+                                class="px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-wider uppercase">
+                                Season 1
+                            </span>
+                            <span
+                                class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs font-bold tracking-wider uppercase">
+                                Action
+                            </span>
+                            <div class="flex items-center gap-1 text-gray-500 text-xs font-mono ml-auto">
+                                <span class="material-symbols-outlined text-sm">visibility</span> 1.2M Views
+                            </div>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-display font-bold text-white hero-glow">Ep 1. The Awakening
+                        </h1>
+                        <div class="flex items-center gap-4 text-sm text-gray-400">
+                            <span class="text-primary font-bold">The First Guardian</span>
+                            <span>•</span>
+                            <span>Dec 10, 2023</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">schedule</span> 45m 20s</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-grow space-y-4">
+                            <p class="text-gray-300 leading-relaxed font-light text-lg">
+                                Satria's peaceful life in the village is disrupted when strange dark creatures begin to
+                                appear from the forest. An ancient artifact reacts to his presence, signaling the
+                                beginning of a prophecy written in the stars long ago.
+                            </p>
+                            <div class="flex gap-4 pt-2">
+                                <button
+                                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-gray-300 hover:text-white">
+                                    <span class="material-symbols-outlined text-xl">thumb_up</span>
+                                    <span class="text-sm font-bold">Like</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-gray-300 hover:text-white">
+                                    <span class="material-symbols-outlined text-xl">share</span>
+                                    <span class="text-sm font-bold">Share</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 transition-colors text-gray-300 hover:text-primary">
+                                    <span class="material-symbols-outlined text-xl">playlist_add</span>
+                                    <span class="text-sm font-bold">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-64 flex-shrink-0">
+                            <div
+                                class="bg-gradient-to-br from-surface-dark to-black border border-primary/20 rounded-xl p-4 relative overflow-hidden group cursor-pointer hover:border-primary/50 transition-all">
+                                <div
+                                    class="absolute -right-4 -top-4 w-20 h-20 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-all">
+                                </div>
+                                <h4 class="text-sm font-bold text-primary mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base">redeem</span> Watch Reward
+                                </h4>
+                                <p class="text-xs text-gray-400 mb-3">Watch 3 episodes to unlock the "Novice Guardian"
+                                    badge.</p>
+                                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-1/3"></div>
+                                </div>
+                                <p class="text-[10px] text-right text-gray-500 mt-1">1/3 Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-dark/40 backdrop-blur border border-white/5 rounded-xl p-6">
+                        <h3 class="text-xl font-display font-bold text-white mb-4">Cerita &amp; Lore</h3>
+                        <p class="text-gray-400 font-light leading-relaxed">
+                            In an age where myths breathe and legends walk among us, <strong class="text-white">The
+                                First Guardian</strong> chronicles the perilous journey of Satria. As the darkness grows
+                            stronger, Satria faces a choice that will echo through eternity. This cinematic masterpiece
+                            lays the foundation for the entire PATRION universe.
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-4 xl:col-span-4">
+                    <div
+                        class="bg-surface-dark/80 backdrop-blur border border-white/10 rounded-xl overflow-hidden sticky top-24 flex flex-col max-h-[calc(100vh-8rem)]">
+                        <div class="p-4 border-b border-white/10 bg-[#151210]">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-white font-display font-bold text-lg">Daftar Episode</h3>
+                                <span class="text-xs text-gray-500 font-mono">3 Episodes Available</span>
+                            </div>
+                            <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-primary text-background-dark font-bold text-sm shadow-[0_0_15px_rgba(244,192,37,0.3)] whitespace-nowrap transition-transform active:scale-95">
+                                    Season 1
+                                </button>
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5 font-medium text-sm transition-all whitespace-nowrap">
+                                    Season 2
+                                </button>
+                                <button
+                                    class="px-4 py-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5 font-medium text-sm transition-all whitespace-nowrap">
+                                    Extras
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-y-auto custom-scrollbar flex-grow p-2 space-y-2 bg-[#0f0c0a]">
+                            <div
+                                class="p-2 rounded-lg bg-white/5 border border-primary/30 flex gap-3 group transition-all">
+                                <div
+                                    class="relative w-32 aspect-video bg-black rounded overflow-hidden flex-shrink-0 border border-primary/20">
+                                    <img alt="Thumbnail" class="w-full h-full object-cover opacity-60"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBleWaxuuEUGJoeKnjkbLhSDlqO4Ol3KbE5cYwXtG9SuGz6k16dYa3fah4DX3b-A2oO8mPHjz7Oo9W906fGozDEuN685wsCMFoNoFZwaRYkTuzEPHqObQkEvaVtOK1Ik2WSJYGy3vMaoQJXuhQgu9VGggGwasOxcdWorXnLQu6pD55IvlnwPNdJxOjiWII78_ldJg9-w8Jk5wzAuqy2DabXyf2GEhv4GY7wuLFlPggczagmaomDsiD9j4ofijoErOY1W-csr3Llqi0" />
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
+                                            <span
+                                                class="material-symbols-outlined text-background-dark text-lg animate-pulse">equalizer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col justify-center min-w-0">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Now
+                                        Playing</span>
+                                    <h5 class="text-white text-sm font-bold truncate">Ep 1. The Awakening</h5>
+                                    <span class="text-xs text-gray-500 mt-1">45m 20s</span>
+                                </div>
+                            </div>
+                            <div
+                                class="p-2 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5 flex gap-3 group cursor-pointer transition-all">
+                                <div
+                                    class="relative w-32 aspect-video bg-surface-dark rounded overflow-hidden flex-shrink-0 group-hover:brightness-110 transition-all">
+                                    <div
+                                        class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="material-symbols-outlined text-white text-2xl drop-shadow-lg">play_circle</span>
+                                    </div>
+                                    <span
+                                        class="absolute bottom-1 right-1 bg-black/80 text-[10px] text-white px-1.5 py-0.5 rounded font-mono">42:15</span>
+                                </div>
+                                <div class="flex flex-col justify-center min-w-0">
+                                    <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">Up
+                                        Next</span>
+                                    <h5
+                                        class="text-gray-300 group-hover:text-primary text-sm font-bold truncate transition-colors">
+                                        Ep 2. Whispers of the Old Gods</h5>
+                                    <p class="text-xs text-gray-500 mt-1 line-clamp-1">Meeting the Sage of Bromo.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="p-2 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5 flex gap-3 group cursor-pointer transition-all">
+                                <div
+                                    class="relative w-32 aspect-video bg-surface-dark rounded overflow-hidden flex-shrink-0 group-hover:brightness-110 transition-all">
+                                    <div
+                                        class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors">
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="material-symbols-outlined text-white text-2xl drop-shadow-lg">play_circle</span>
+                                    </div>
+                                    <span
+                                        class="absolute bottom-1 right-1 bg-black/80 text-[10px] text-white px-1.5 py-0.5 rounded font-mono">48:05</span>
+                                </div>
+                                <div class="flex flex-col justify-center min-w-0">
+                                    <h5
+                                        class="text-gray-300 group-hover:text-primary text-sm font-bold truncate transition-colors">
+                                        Ep 3. Trial by Fire</h5>
+                                    <p class="text-xs text-gray-500 mt-1 line-clamp-1">The volcano trials begin.</p>
+                                </div>
+                            </div>
+                            <div class="p-2 rounded-lg opacity-60 flex gap-3 group cursor-not-allowed">
+                                <div
+                                    class="relative w-32 aspect-video bg-surface-dark rounded overflow-hidden flex-shrink-0 grayscale">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-gray-400 text-xl">lock</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col justify-center min-w-0">
+                                    <h5 class="text-gray-400 text-sm font-bold truncate">Ep 4. Shadows Fall</h5>
+                                    <p class="text-xs text-gray-600 mt-1">Available Dec 31</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 border-t border-white/10 bg-[#151210] text-center">
+                            <button
+                                class="text-xs font-bold text-primary hover:text-white uppercase tracking-wider transition-colors flex items-center justify-center gap-1 w-full py-1">
+                                View All Episodes <span class="material-symbols-outlined text-sm">expand_more</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#0f0c0a] border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center bg-primary rounded shadow-lg text-background-dark">
+                            <span class="material-symbols-outlined text-lg font-bold">shield</span>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">PATRION</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">
+                        Forging legends in the digital age. Bringing the spirit of Nusantara to the world stage.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Explore</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">World Map</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Characters</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Lore</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Community</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Discord</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold mb-4">Legal</h5>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-sm">© 2024 PATRION. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-secondary-red transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all duration-300"
+                        href="#">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
